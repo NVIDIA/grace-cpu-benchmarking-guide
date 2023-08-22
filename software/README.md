@@ -19,6 +19,3 @@ Docker, Kubernetes, Singuarlity, CharlieCloud, Saurs, and many more container en
 
 ## Operating Systems
 Please check [here](os.md) for more information about which operating system to run on the NVIDIA Arm HPC Developer Kit.
-
-## Recent Updates, Known Issues, and Workarounds
-Please see [here](known_issues.md) for recently identified issues and their solutions.  Please also check the [AWS Graviton Getting Started Guide](https://github.com/aws/aws-graviton-getting-started) for known issues and workarounds.

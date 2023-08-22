@@ -1,11 +1,10 @@
-# STREAM on Arm64 CPU
+# STREAM on NVIDIA Grace
 
-**IMPORTANT**:
-These benchmarks provide a _lower bound_ for expected out-of-the-box performance.  They can be used to determine if your system is configured correctly and operating properly.  It's possible you may exceed these numbers.  **They are not indented for use in any competitive analysis.**
-
- * [NVIDIA HPC SDK](#nvidia-hpc-sdk)
- * [GNU Compilers](#gnu-compilers)
- * [Arm Compiler for Linux (ACfL)](#arm-compiler-for-linux-acfl)
+- [STREAM on NVIDIA Grace](#stream-on-nvidia-grace)
+  - [Initial Configuration](#initial-configuration)
+  - [NVIDIA HPC SDK](#nvidia-hpc-sdk)
+  - [GNU Compilers](#gnu-compilers)
+  - [Arm Compiler for Linux (ACfL)](#arm-compiler-for-linux-acfl)
 
 
 ## Initial Configuration

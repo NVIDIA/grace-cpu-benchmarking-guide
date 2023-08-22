@@ -1,4 +1,4 @@
-# ML Inference on Arm64 CPUs with TensorFlow
+# ML Inference on NVIDIA Grace CPUs with TensorFlow
 
 TensorFlow is an open-source software library for machine learning and artificial intelligence. It can be used across training and inference of deep neural networks. This document covers how to use TensorFlow based machine learning inference on Arm64 CPUs, what runtime configurations are important, and how to debug any performance issues. The document also covers instructions for source builds and how to enable some of the downstream features.
 
