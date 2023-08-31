@@ -4,7 +4,7 @@ This is a suite of open source microkernels for benchmarking Arm CPUs.  These ke
 
 ## Reference Results
 
-A Grace CPU operating at approximately 3.3 GHz scores approximately 52 Gop/sec. 
+ * GH200, single core at 3.3GHz: ~52 Gop/sec
 
 ## Install
 

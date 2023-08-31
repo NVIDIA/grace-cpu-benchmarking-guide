@@ -7,7 +7,7 @@ This guide includes how-to guides, sample code, recommendations, and technical b
 
 * [Foundations](foundations/README.md)
   * [Speed-of-light FMA](foundations/fma.md)
-  * [STREAM](foundations/stream-cpu.md)
+  * [STREAM](foundations/stream.md)
 * [Benchmarks](benchmarks/README.md)
   * [SPEC CPU 2017](benchmarks/speccpu-2k17.md)
   * [HPL](benchmarks/hpl-cpu/hpl-cpu.md)
