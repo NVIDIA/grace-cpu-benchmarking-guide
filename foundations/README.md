@@ -1,4 +1,4 @@
 # Foundations
 
- * [Speed-of-light FMA](benchmarks/fma.md)
- * [STREAM](benchmarks/stream-cpu.md)
+ * [Speed-of-light FMA](fma.md)
+ * [STREAM](stream-cpu.md)
