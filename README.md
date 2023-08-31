@@ -3,7 +3,7 @@
 
 This guide includes how-to guides, sample code, recommendations, and technical best practices to help achieve optimal performance for key benchmarks and applications (workloads) running on a NVIDIA Grace CPU.
 
-For more details, **see the accompanying [NVIDIA Grace CPU Benchmarking Guide](LINK_HERE).**
+**See the accompanying [NVIDIA Grace CPU Benchmarking Guide](LINK_HERE).**
 
 * [Foundations](foundations/README.md)
   * [Speed-of-light FMA](foundations/fma.md)
