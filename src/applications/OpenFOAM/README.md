@@ -1,5 +1,10 @@
 # OpenFOAM with ParaView on Arm64
 
+*PIC TBD*
+
+----
+**Stub content from a previous guide**
+
 OpenFOAM is the free, open source CFD software developed primarily by OpenCFD Ltd since 2004. It has a large user base across most areas of engineering and science, from both commercial and academic organisations. OpenFOAM has an extensive range of features to solve anything from complex fluid flows involving chemical reactions, turbulence and heat transfer, to acoustics, solid mechanics and electromagnetics. See https://www.openfoam.com/ for more details.
 
 OpenFOAM is a classic demonstrator of the power of Arm-base HPC systems and has appeared in Arm demos for many years.  In fact, there's no difference between OpenFOAM on Arm64 or any other achirecture, except that Arm-based systems tend to have high memory bandwidth and a high number of CPU cores.  These design features work well with CFD codes, and are especially useful for CFD codes that have not been ported to GPUs.  If your models were developed on a system with low memory bandwidth and few cores, you'll want to update your paramters.

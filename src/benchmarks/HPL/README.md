@@ -1,5 +1,12 @@
 # HPL on NVIDIA Grace CPU
 
+*PIC TBD*
+
+----
+**Stub content from a previous guide**
+
+
+
 - [HPL on NVIDIA Grace CPU](#hpl-on-nvidia-grace-cpu)
   - [Introduction](#introduction)
   - [Initial Configuration](#initial-configuration)

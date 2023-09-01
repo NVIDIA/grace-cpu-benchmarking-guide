@@ -1,3 +1,3 @@
 # SPEC CPU
 
-Anath
+Ananth Nallamuthu

@@ -1,5 +1,11 @@
 # STREAM
 
+Sean Kelley
+
+----
+**Stub content from a previous guide**
+
+
 STREAM is a defacto standard for measuring memory bandwidth. The benchmark includes four kernels that operate on 1D arrays `a`, `b`, and `c`, with scalar `x`:
 
  * **COPY**: `c = a`

@@ -1,1 +1,4 @@
 # NAMD
+
+David Clark
+

@@ -1,3 +1,3 @@
 # Spark k-means
 
-Rance
+Rance Rodrigues
