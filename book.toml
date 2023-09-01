@@ -1,6 +1,21 @@
 [book]
+title = "NVIDIA Grace CPU Benchmarking Guide"
 authors = ["John Linford"]
+description = "Examples and reference results for benchmarking the NVIDIA Grace CPU"
 language = "en"
 multilingual = false
 src = "src"
-title = "Grace CPU Benchmarking Guide"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+curly-quotes = true
+mathjax-support = true
+copy-fonts = true
+no-section-label = true
+git-repository-icon = "fa-github"
+git-repository-url = "https://gitlab-master.nvidia.com/jlinford/grace-cpu-benchmarking-guide"
+edit-url-template = "https://gitlab-master.nvidia.com/-/ide/project/jlinford/grace-cpu-benchmarking-guide/edit/main/-/{path}"
+# Release
+#git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
+#edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/master/{path}"
