@@ -1,13 +1,11 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-# NVIDIA Grace CPU Benchmarking Guide
+# [NVIDIA Grace CPU Benchmarking Guide][published]
 
-This is the source code for the [NVIDIA Grace CPU Benchmarking Guide](https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/).
-
-> :warning: **You are looking at source code.**  We recommend reading the published guide: https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/
+**:warning: This is the guide's source code, not [the published guide][published]. :warning:**  We recommend reading the published guide: https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/
 
 
-## Reading a local copy of this guide
+## Working with a local copy
 
 This guide is written with [mdBook](https://github.com/rust-lang/mdBook). To view a local copy of this guide, use `mdbook serve` and view the guide in your web browser:
 ```bash
@@ -26,3 +24,7 @@ Follow the paths shown in [`src/SUMMARY.md`](src/SUMMARY.md).
 -----
 
 Contact: jlinford@nvidia.com
+
+
+
+[published]: <https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/> "NVIDIA Grace CPU Benchmarking Guide"
