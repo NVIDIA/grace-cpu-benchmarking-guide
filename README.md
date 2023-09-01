@@ -18,9 +18,16 @@ Navigate to the URL shown in the console output, e.g.
 If you do not wish to use mdBook, the code in the [`src`](src/) directory is readable by most humans.
 Follow the paths shown in [`src/SUMMARY.md`](src/SUMMARY.md).
 
+## License
+
+Unless otherwise indicated, this work is licensed under
+[The 3-Clause BSD License](https://opensource.org/license/bsd-3-clause/).  Individual examples or attached source code may be under a different license.  Check the related README or LICENSE files.
+
+
 -----
 
 Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
 
 
 [1]: <https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/> "NVIDIA Grace CPU Benchmarking Guide"
