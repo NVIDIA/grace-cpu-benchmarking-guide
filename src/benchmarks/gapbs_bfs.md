@@ -1,4 +1,1 @@
-# GapBS BFS
-
-Jay Shah
-
+# Graph500

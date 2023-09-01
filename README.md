@@ -1,8 +1,8 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-# [NVIDIA Grace CPU Benchmarking Guide][published]
+# [NVIDIA Grace CPU Benchmarking Guide][1]
 
-**:warning: This is the guide's source code, not [the published guide][published]. :warning:**  We recommend reading the published guide: https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/
+**:warning: This is the guide's source code, not [the published guide][1]. :warning:**  It's much easier to read and navigate the published guide: https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/
 
 
 ## Working with a local copy
@@ -22,8 +22,7 @@ Follow the paths shown in [`src/SUMMARY.md`](src/SUMMARY.md).
 
 -----
 
-Contact: jlinford@nvidia.com
+Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 
-
-[published]: <https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/> "NVIDIA Grace CPU Benchmarking Guide"
+[1]: <https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/> "NVIDIA Grace CPU Benchmarking Guide"

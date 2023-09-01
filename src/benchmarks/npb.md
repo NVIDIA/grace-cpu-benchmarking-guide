@@ -1,1 +1,1 @@
-# NAS Parallel Benchmarks (NPB 1)
+# NAS Parallel Benchmarks

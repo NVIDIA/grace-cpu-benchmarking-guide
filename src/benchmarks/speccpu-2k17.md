@@ -1,3 +1,1 @@
-# SPEC CPU
-
-Anath
+# SPEC CPU 2017
