@@ -7,7 +7,6 @@
     - [STREAM](foundations/STREAM/README.md)
 - [Benchmarks](benchmarks/README.md)
     - [SPEC CPU 2017](benchmarks/SPEC_CPU_2017/README.md)
-    - [HPL](benchmarks/HPL/README.md)
     - [Spark k-means](benchmarks/Spark_KMeans/README.md)
     - [GAP Benchmark Suite: BFS](benchmarks/GAP_BS_BFS/README.md)
     - [pyperf](benchmarks/PyPerf/README.md)
