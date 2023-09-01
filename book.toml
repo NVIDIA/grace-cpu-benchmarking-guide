@@ -1,6 +1,6 @@
 [book]
 title = "NVIDIA Grace CPU Benchmarking Guide"
-authors = ["John Linford"]
+authors = ["NVIDIA Inc."]
 description = "Examples and reference results for benchmarking the NVIDIA Grace CPU"
 language = "en"
 multilingual = false
