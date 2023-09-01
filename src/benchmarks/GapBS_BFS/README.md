@@ -1,4 +1,0 @@
-# GapBS BFS
-
-Jay Shah
-

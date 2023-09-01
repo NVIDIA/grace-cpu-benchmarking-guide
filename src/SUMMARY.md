@@ -9,7 +9,7 @@
     - [SPEC CPU 2017](benchmarks/SPEC_CPU_2017/README.md)
     - [HPL](benchmarks/HPL/README.md)
     - [Spark k-means](benchmarks/Spark_KMeans/README.md)
-    - [GapBS BFS](benchmarks/GapBS_BFS/README.md)
+    - [GAP Benchmark Suite: BFS](benchmarks/GAP_BS_BFS/README.md)
     - [pyperf](benchmarks/PyPerf/README.md)
     - [NAS Parallel Benchmarks](benchmarks/NPB/README.md)
 - [Applications](applications/README.md)
