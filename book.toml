@@ -9,8 +9,6 @@ src = "src"
 [build]
 create-missing = false
 
-[preprocessor.pagetoc]
-
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
@@ -24,5 +22,3 @@ edit-url-template = "https://gitlab-master.nvidia.com/-/ide/project/jlinford/gra
 # Release
 #git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
 #edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/master/{path}"
-additional-css = ["theme/pagetoc.css"]
-additional-js  = ["theme/pagetoc.js"]

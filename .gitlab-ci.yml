@@ -11,7 +11,6 @@ pages:
   before_script:
     - export PATH="$PATH:$CARGO_HOME/bin"
     - mdbook --version || cargo install mdbook
-    - mdbook-pagetoc --help || cargo install mdbook-pagetoc
   script:
     - mdbook build -d public
   rules:
