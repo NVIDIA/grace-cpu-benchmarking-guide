@@ -1,5 +1,3 @@
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-
 # [NVIDIA Grace CPU Benchmarking Guide][1]
 
 **:warning: This is the guide's source code, not [the published guide][1]. :warning:**  It's much easier to read and navigate the published guide: https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/
