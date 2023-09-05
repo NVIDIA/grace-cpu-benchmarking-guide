@@ -2,10 +2,10 @@
 
 STREAM is a defacto standard for measuring memory bandwidth. The STREAM benchmark is a simple, synthetic benchmark program that measures sustainable main memory bandwidth in MB/s and the corresponding computation rate for simple vector kernels. The benchmark includes four kernels that operate on 1D arrays `a`, `b`, and `c`, with scalar `x`:
 
- * **COPY**: `Measures transfer rates in the absence of arithmeti, c = a`
- * **SCALE**: `Adds a simple arithmetic operation. b = x*a`
- * **ADD**: `Adds a third operand to allow multiple load/store ports on vector machines to be tested, c = a + b`
- * **TRIAD**: `Allows chained/overlapped/fused multiply/add operations, a = b + x*c`
+ * **COPY**: Measures transfer rates in the absence of arithmetic, `c = a`
+ * **SCALE**: Adds a simple arithmetic operation. `b = x*a`
+ * **ADD**: Adds a third operand to allow multiple load/store ports on vector machines to be tested, `c = a + b`
+ * **TRIAD**: Allows chained/overlapped/fused multiply/add operations, `a = b + x*c`
 
 The kernels are executed in sequence in a loop. Two parameters configure STREAM:
  * `STREAM_ARRAY_SIZE`: The number of double-precision elements in each array.
