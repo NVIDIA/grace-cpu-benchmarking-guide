@@ -54,9 +54,7 @@ This command will pin our application to CPU socket 0 and physical cores 0-71.
 
 When you run bfs on a Kronecker graph of scale 26 and degree 16, you should see Average Time around 0.0395 ± 0.001 ms as shown in the figure below.
 
-![Example Output](example_output1.png)
-![Example Output](example_output2.png)
-
+![Example Output](sample_output.png)
 
 
 
