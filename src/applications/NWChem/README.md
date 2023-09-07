@@ -1,4 +1,0 @@
-# NWChem
-
-Jeff Hammond
-

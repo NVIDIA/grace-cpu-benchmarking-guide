@@ -10,31 +10,53 @@ There are several ways to determine the available Arm CPU resources and topology
  * Number of NUMA nodes per socket
  * CPU cores per NUMA node
 
-Well-established portable libraries like libnuma and hwloc are a great choice on Arm64.  You can also use Arm's CPUID registers or query OS files.  Since many of these methods serve the same function, you should choose the method that best fits your application.
+Well-established portable libraries like `libnuma` and `hwloc` are a great choice on Grace.  You can also use Arm's CPUID registers or query OS files.  Since many of these methods serve the same function, you should choose the method that best fits your application.
 
 If you're implementing your own approach, then please look at the Arm Architecture Registers, and especially the Main ID Register (MIDR_EL1): https://developer.arm.com/documentation/ddi0601/2020-12/AArch64-Registers/MIDR-EL1--Main-ID-Register
 
 The source code for the `lscpu` utility is a great example of how to retrieve and use these registers.  For example, here's how to translate the CPU part number in the MIDR_EL1 register to a human-readable string: https://github.com/util-linux/util-linux/blob/master/sys-utils/lscpu-arm.c
 
-Here's the output of `lscpu` on an AWS Graviton 3.
+Here's the output of `lscpu` on NVIDIA Grace-Hopper:
 ```
-[jlinford@c7g-16xlarge-dy-c7g16xlarge-1 ~]$ lscpu
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              64
-On-line CPU(s) list: 0-63
-Thread(s) per core:  1
-Core(s) per socket:  64
-Socket(s):           1
-NUMA node(s):        1
-Model:               1
-BogoMIPS:            2100.00
-L1d cache:           64K
-L1i cache:           64K
-L2 cache:            1024K
-L3 cache:            32768K
-NUMA node0 CPU(s):   0-63
-Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs paca pacg dcpodp svei8mm svebf16 i8mm bf16 dgh rng
+nvidia@localhost:/home/nvidia$ lscpu
+Architecture:          aarch64
+  CPU op-mode(s):      64-bit
+  Byte Order:          Little Endian
+CPU(s):                72
+  On-line CPU(s) list: 0-71
+Vendor ID:             ARM
+  Model:               0
+  Thread(s) per core:  1
+  Core(s) per socket:  72
+  Socket(s):           1
+  Stepping:            r0p0
+  Frequency boost:     disabled
+  CPU max MHz:         3438.0000
+  CPU min MHz:         81.0000
+  BogoMIPS:            2000.00
+  Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp sve2 sveaes svepmull svebitpe
+                       rm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh bti
+Caches (sum of all):
+  L1d:                 4.5 MiB (72 instances)
+  L1i:                 4.5 MiB (72 instances)
+  L2:                  72 MiB (72 instances)
+  L3:                  114 MiB (1 instance)
+NUMA:
+  NUMA node(s):        1
+  NUMA node0 CPU(s):   0-71
+  NUMA node1 CPU(s):
+Vulnerabilities:
+  Itlb multihit:       Not affected
+  L1tf:                Not affected
+  Mds:                 Not affected
+  Meltdown:            Not affected
+  Mmio stale data:     Not affected
+  Retbleed:            Not affected
+  Spec store bypass:   Mitigation; Speculative Store Bypass disabled via prctl
+  Spectre v1:          Mitigation; __user pointer sanitization
+  Spectre v2:          Not affected
+  Srbds:               Not affected
+  Tsx async abort:     Not affected
 ```
 
 ## CPU Hardware Capabilities
@@ -84,7 +106,6 @@ static MIDR_EL1 read_MIDR_EL1()
     return reg;
 }
 
-
 static const char * get_implementer_name(MIDR_EL1 midr)
 {
     switch(midr.implementer) 
@@ -107,7 +128,6 @@ static const char * get_implementer_name(MIDR_EL1 midr)
     }
 }
 
-
 static const char * get_part_name(MIDR_EL1 midr)
 {
     switch(midr.implementer) 
@@ -120,6 +140,7 @@ static const char * get_part_name(MIDR_EL1 midr)
                 case 0xd09: return "Cortex A73";
                 case 0xd0c: return "Neoverse N1";
                 case 0xd40: return "Neoverse V1";
+                case 0xd4f: return "Neoverse V2";
                 default:    return "Unknown";
             }
         case 0x42: // Broadcom
@@ -153,9 +174,6 @@ static const char * get_part_name(MIDR_EL1 midr)
         default: return "Unknown";
     }
 }
-
-
-
 
 int main(void) 
 {
