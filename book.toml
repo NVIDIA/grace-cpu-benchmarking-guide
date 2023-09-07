@@ -11,7 +11,7 @@ create-missing = false
 
 [output.html]
 default-theme = "light"
-preferred-dark-theme = "navy"
+preferred-dark-theme = "coal"
 curly-quotes = true
 mathjax-support = true
 copy-fonts = true
