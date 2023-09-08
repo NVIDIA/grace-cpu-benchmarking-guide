@@ -1,8 +1,8 @@
 # GAP Benchmark Suite: BFS
 
-The [GAP Benchmark Suite (Beamer, 2015)][1] was released with the goal of helping standardize graph processing evaluations. Graph algorithms and their applications are currently gaining renewed interest, especially with the growth of social networks and their analysis. Graph algorithms are also important for their applications in science and recognition. The GAP benchmark suite builds upon the [graph500](https://graph500.org/) competition by providing substantially higher performance reference code and provides a standard for graph processing evaluations. 
+The [GAP Benchmark Suite (Beamer, 2015)][1] was released with the goal of helping standardize graph processing evaluations. Graph algorithms and their applications are currently gaining renewed interest, especially with the growth of social networks and their analysis. Graph algorithms are also important for their applications in science and recognition. The GAP benchmark suite provides high performance (CPU only) reference implementations for various graph operations and provides a standard for graph processing performance evaluations. 
 
-Even though GAP benchmark suite provides real world graphs and more than one kernel, we will only look at what the graph500 competition looks at but from the GAP benchmarking suite perspective, i.e., using synthetic Kronecker graphs and focusing on the Breadth First Search (BFS) kernel.  
+Even though GAP benchmark suite provides real world graphs and more than one kernel (high performance implementation of various graph operation algorithms), we will only look at using synthetic [Kronecker graphs](https://en.wikipedia.org/wiki/Kronecker_graph) and will be focusing on the [Breadth First Search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search) kernel.
 
 ## Initial Configuration
 
@@ -34,15 +34,15 @@ Additional command line flags can be found with `-h`.
 After successfully building and running a test run, you should be ready to run the bfs kernel.
 
 **Note**: The command line options of interest here are:
-* `-g <scale>`: generate Kronecker graph with 2^scale vertices (Graph500 specifications)
-* `-k <degree>`: average degree for synthetic graph (default value: 16) (Graph500 specifications)
+* `-g <scale>`: generate Kronecker graph with 2^scale vertices
+* `-k <degree>`: average degree for synthetic graph (default value: 16)
 * `-n <n>`: perform n trials (default value: 16)
 
 Typically, we select a scale such that the working dataset size for the workload lies outside the Last level cache on the test platforms.
 
 A scale value of 26 means our graph will have ~67.11 M vertices. This size of graph should be large enough so that the working set of the workload will not completely lie within the last level cache of the Grace CPU. 
 
-The default value for average degree is chosen i.e., 16. And to emulate the reference code from the graph500 competition, we will choose 64 trials, i.e. -n value of 64.
+The default value for average degree is chosen i.e., 16. We have chosen 64 trials for our runs, i.e. -n value of 64.
 
 Run bfs with the following command:
 ```bash
@@ -52,7 +52,7 @@ This command will pin our application to CPU socket 0 and physical cores 0-71.
 
 ## Output
 
-When you run bfs on a Kronecker graph of scale 26 and degree 16, you should see Average Time around 0.0395 ± 0.001 ms as shown in the figure below.
+When you run bfs using the above command on a Grace machine with atleast 72 cores, using Kronecker graph of scale 26 and degree 16 for 64 trials, we see an Average Time around 0.0395 ± 0.001 ms as shown in the figure below.
 
 [![Example Output](sample_output.png)](sample_output.png)
 
