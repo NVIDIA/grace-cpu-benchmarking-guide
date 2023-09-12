@@ -1,8 +1,8 @@
 # NAMD
 
-NAMD is a widely used molecular dynamics software targeted at large scale simulations of biomolecular systems[1]. It is developed by the Theoretical and Computational Biophysics Group in the Beckman Institute for Advanced Science and Technology at the University of Illinois at Urbana-Champaign and was used in the winning submission for the 2020 ACM Gordon Bell Special Prize for COVID-19 Research[2]. As part of the submission, NAMD was used to simulate a 305 million atom SARS-CoV-2 viral envelope on over four thousand nodes of ORNL Summit supercomputer. The Charm++ framework is used to scale to thousands of GPUs and hundreds of thousands CPU cores[3].
+NAMD is a widely used molecular dynamics software targeted at large scale simulations of biomolecular systems[1]. It is developed by the Theoretical and Computational Biophysics Group in the Beckman Institute for Advanced Science and Technology at the University of Illinois at Urbana-Champaign and was used in the winning submission for the 2020 ACM Gordon Bell Special Prize for COVID-19 Research[2]. As part of the submission, NAMD was used to simulate a 305 million atom SARS-CoV-2 viral envelope on over four thousand nodes of the ORNL Summit supercomputer. The Charm++ framework is used to scale to thousands of GPUs and hundreds of thousands of CPU cores[3].
 
-NAMD has supported Arm64 since 2014, and the following are instructions for building and running NAMD on an ARM system. The NAMD source code is available on Gitlab (https://gitlab.com/tcbgUIUC/namd) upon submitting a request at https://www.ks.uiuc.edu/Research/namd/gitlabrequest.html.
+NAMD has supported Arm64 since 2014, and the following are instructions for building and running NAMD on an ARM system. The NAMD source code is available on Gitlab [https://gitlab.com/tcbgUIUC/namd](https://gitlab.com/tcbgUIUC/namd) upon submitting a request at [https://www.ks.uiuc.edu/Research/namd/gitlabrequest.html](https://www.ks.uiuc.edu/Research/namd/gitlabrequest.html).
 
 ## Building from source
 
