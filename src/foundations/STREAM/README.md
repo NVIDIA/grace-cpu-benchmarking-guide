@@ -35,8 +35,7 @@ commands download and compile STREAM with a total memory footprint of approximat
 Example of the STREAM Execution Output:
 
 ```
-jlinford@fc01-gg01:~$ OMP_NUM_THREADS=72 OMP_PROC_BIND=spread numactl -m0,1
-./stream_openmp.exe
+jlinford@fc01-gg01:~$ OMP_NUM_THREADS=72 OMP_PROC_BIND=spread numactl -m0,1 ./stream_openmp.exe
 -------------------------------------------------------------
 STREAM version $Revision: 5.10 $
 -------------------------------------------------------------
@@ -54,7 +53,7 @@ Number of Threads counted = 72
 -------------------------------------------------------------
 Your clock granularity/precision appears to be 1 microseconds.
 Each test below will take on the order of 2927 microseconds.
- (= 2927 clock ticks)
+   (= 2927 clock ticks)
 Increase the size of the arrays if this shows that
 you are not getting at least 20 clock ticks per test.
 -------------------------------------------------------------
@@ -62,14 +61,14 @@ WARNING -- The above is only a rough guideline.
 For best results, please be sure you know the
 precision of your system timer.
 -------------------------------------------------------------
-Function Best Rate MB/s Avg time Min time Max time
-Copy: 919194.6 0.002149 0.002089 0.002228
-Scale: 913460.0 0.002137 0.002102 0.002192
-Add: 916926.9 0.003183 0.003141 0.003343
-Triad: 903687.9 0.003223 0.003187 0.003308
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:          919194.6     0.002149     0.002089     0.002228
+Scale:         913460.0     0.002137     0.002102     0.002192
+Add:           916926.9     0.003183     0.003141     0.003343
+Triad:         903687.9     0.003223     0.003187     0.003308
 -------------------------------------------------------------
 Solution Validates: avg error less than 1.000000e-13 on all three arrays
---------------------------------------------------------
+-------------------------------------------------------------
 ```
 
 ## Install
@@ -83,7 +82,7 @@ gcc -Ofast -march=native -fopenmp \
   	-o stream_openmp.exe stream.c
 ```
 
-## Execute for a single socket
+## Execute
 
 To run STREAM, set the number of OpenMP threads (OMP_NUM_THREADS) and the numactl flags according to the example below. Replace `{THREADS}` and `{FLAGS}` with the appropriate values from the table of reference results shown above. Use `OMP_PROC_BIND=spread` to distribute the threads evenly over all available cores and maximize bandwidth.
 
