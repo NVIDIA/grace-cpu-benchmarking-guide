@@ -2,7 +2,7 @@
 
 Before benchmarking, it's important to check the platform configuration is optimal for the target benchmark.
 The optimal configuration may vary by benchmark, but there are some common high-level settings to be aware of.
-For a more comprehensive guide to platform tuning, see the [NVIDIA Grace Hopper and Grace CPU Platform Tuning Guide](FIXME).
+For a more comprehensive guide to platform tuning, see the NVIDIA Grace Hopper and Grace CPU Platform Tuning Guide.
 
 ## Software Environment
 
@@ -11,7 +11,7 @@ The bare minimum requirements are:
 - Install all available software updates, e.g. `sudo apt update && sudo apt upgrade` on Ubuntu.
 - GNU binutils should be at version 2.38 or later. `ldd --version` will report the binutils version.
 - GCC should be at version 12.3 or later. `gcc --version` will report the GCC version.
-
+ 
 In addition, we strongly recommend installing the following software packages:
 
 | Package                                                                                | Version | Download Link                                                                   |

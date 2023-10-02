@@ -9,6 +9,8 @@ src = "src"
 [build]
 create-missing = false
 
+[preprocessor.external-links]
+
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "coal"
@@ -22,3 +24,5 @@ edit-url-template = "https://gitlab-master.nvidia.com/-/ide/project/jlinford/gra
 # Release
 #git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
 #edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/master/{path}"
+
+[output.linkcheck]

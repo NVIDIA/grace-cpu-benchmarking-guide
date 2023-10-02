@@ -19,5 +19,5 @@ provided by other tools on NVIDIA Grace.  See [Debugging](debugging.md) and [Pro
 
 ## Language-specific Guidance
 
-Check the [Languages](languages/index.html) page for any language-specific guidance related to LSE, locking, synchronization, and atomics. 
+Check the [Languages](languages/README.md) page for any language-specific guidance related to LSE, locking, synchronization, and atomics. 
 If no guide is provided then there are no Arm-related specific issues for that language.  Just proceed as you would on any other platform.

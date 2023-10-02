@@ -101,7 +101,7 @@ To perform the cast, you must use NEON's `vreinterpretq` functions:
 u64x2 = vreinterpretq_u64_s64(s64x2);
 ```
 
-Unfortunately, some codes written for other SIMD ISAs rely on these kinds of implicit conversions (see the [Velox example](../examples/velox.md)).  If you see errors about "no known conversion" in a code that builds for AVX but doesn't build for NEON then we might need to relax GCC's vector converversion rules: 
+Unfortunately, some codes written for other SIMD ISAs rely on these kinds of implicit conversions.  If you see errors about "no known conversion" in a code that builds for AVX but doesn't build for NEON then we might need to relax GCC's vector converversion rules.  For example:
 ```
 /tmp/velox/third_party/xsimd/include/xsimd/types/xsimd_batch.hpp:35:11: note:   no known conversion for argument 1 from ‘xsimd::batch<long int>’ to ‘const xsimd::batch<long unsigned int>&’
 ```
