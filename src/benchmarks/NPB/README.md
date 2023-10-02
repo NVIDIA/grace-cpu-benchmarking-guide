@@ -4,12 +4,11 @@ The [NAS Parallel Benchmarks (NPB)](https://www.nas.nasa.gov/software/npb.html) 
 
 ## Reference Results
 
-| Superchip    | Capacity (GB) | Threads | numactl flags | bt | cg | ep | ft | is | lu | mg | sp | ua |
-| ------------ | ------------- | ------- | ------------- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Grace-Hopper | 120           | 72      | -m0           | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 |
-| Grace-Hopper | 480           | 72      | -m0           | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 |
-| Grace CPU    | 240           | 72      | -m0           | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 |
-| Grace CPU    | 240           | 144     | -m0,1         | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 |
+Performance is reported as "Mop/s total".
+
+| Superchip    | Capacity (GB) | Threads | numactl flags | bt.D.x    | cg.D.x   | ep.D.x   | lu.D.x    | mg.D.x    | sp.D.x    | ua.D.x |
+| ------------ | ------------- | ------- | ------------- | --------- | -------- | -------- | --------- | --------- | --------- | ------ |
+| Grace CPU    | 240           | 72      | -m0           | 386758.21 | 26632.65 | 10485.73 | 293407.59 | 125382.93 | 136893.59 | 973.52 |
 
 ## Build
 
@@ -48,8 +47,6 @@ cat > config/suite.def <<'EOF'
 bt	D
 cg	D
 ep	D
-ft	D
-is	D
 lu	D
 mg	D
 sp	D
