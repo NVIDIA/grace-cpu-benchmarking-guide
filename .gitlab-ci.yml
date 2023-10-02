@@ -11,7 +11,7 @@ pages:
     MDBOOK_VERSION: 0.4.35
   before_script: |
     export PATH="$PATH:$CARGO_HOME/bin"
-    cargo install --force --verse ${MDBOOK_VERSION} mdbook 
+    cargo install --force --version ${MDBOOK_VERSION} mdbook 
     cargo install --force mdbook-external-links mdbook-linkcheck
   script:
     - mdbook build -d public
@@ -23,3 +23,4 @@ pages:
   cache:
     paths:
       - $CARGO_HOME/bin
+  
