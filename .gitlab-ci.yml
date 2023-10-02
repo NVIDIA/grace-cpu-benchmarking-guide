@@ -8,9 +8,11 @@ pages:
     - pages
   variables:
     CARGO_HOME: $CI_PROJECT_DIR/cargo
-  before_script:
-    - export PATH="$PATH:$CARGO_HOME/bin"
-    - cargo install mdbook mdbook-external-links mdbook-linkcheck
+    MDBOOK_VERSION: 0.4.35
+  before_script: |
+    export PATH="$PATH:$CARGO_HOME/bin"
+    cargo install --force --verse ${MDBOOK_VERSION} mdbook 
+    cargo install --force mdbook-external-links mdbook-linkcheck
   script:
     - mdbook build -d public
   rules:
