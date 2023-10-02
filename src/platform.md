@@ -14,17 +14,17 @@ The bare minimum requirements are:
  
 In addition, we strongly recommend installing the following software packages:
 
-| Package                                                                                | Version | Download Link                                                                   |
-| -------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------- |
-| [NVIDIA HPC SDK](https://developer.nvidia.com/hpc-sdk)                                 | 23.7    | https://developer.nvidia.com/hpc-sdk-downloads                                  |
-| [NVIDIA Clang for Grace](https://developer.nvidia.com/grace/clang)                     | 16.0.5  | https://developer.nvidia.com/grace/clang/downloads                              |
-| [GNU Binutils](https://ftp.gnu.org/gnu/binutils)                                       | 2.41    | https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.xz                           |
-| [GNU GCC](https://ftp.gnu.org/gnu/gcc)                                                 | 13.2    | https://ftp.gnu.org/gnu/gcc/gcc-13.2.0/gcc-13.2.0.tar.xz                        |
-| [UCX](https://openucx.org/)                                                            | 1.14.1  | https://github.com/openucx/ucx/releases/tag/v1.14.1                             |
-| [OpenMPI](https://www.open-mpi.org)                                                    | 4.1.5   | https://www.open-mpi.org/software/ompi/v4.1/                                    |
-| [MVAPICH2](https://mvapich.cse.ohio-state.edu)                                         | 2.3.7   | https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.7-1.tar.gz |
-| [PAPI](https://icl.utk.edu/papi/)                                                      | 7.0.1   | https://github.com/icl-utk-edu/papi                                             |
-| [Arm Compiler for Linux](https://developer.arm.com/downloads/-/arm-compiler-for-linux) | 23.04   | https://developer.arm.com/downloads/-/arm-compiler-for-linux                    |
+| Package                                                                                | Version | Download Link                                                                     |
+| -------------------------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------- |
+| [NVIDIA HPC SDK](https://developer.nvidia.com/hpc-sdk)                                 | 23.7    | <https://developer.nvidia.com/hpc-sdk-downloads>                                  |
+| [NVIDIA Clang for Grace](https://developer.nvidia.com/grace/clang)                     | 16.0.5  | <https://developer.nvidia.com/grace/clang/downloads>                              |
+| [GNU Binutils](https://ftp.gnu.org/gnu/binutils)                                       | 2.41    | <https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.xz>                           |
+| [GNU GCC](https://ftp.gnu.org/gnu/gcc)                                                 | 13.2    | <https://ftp.gnu.org/gnu/gcc/gcc-13.2.0/gcc-13.2.0.tar.xz>                        |
+| [UCX](https://openucx.org/)                                                            | 1.14.1  | <https://github.com/openucx/ucx/releases/tag/v1.14.1>                             |
+| [OpenMPI](https://www.open-mpi.org)                                                    | 4.1.5   | <https://www.open-mpi.org/software/ompi/v4.1/>                                    |
+| [MVAPICH2](https://mvapich.cse.ohio-state.edu)                                         | 2.3.7   | <https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.7-1.tar.gz> |
+| [PAPI](https://icl.utk.edu/papi/)                                                      | 7.0.1   | <https://github.com/icl-utk-edu/papi>                                             |
+| [Arm Compiler for Linux](https://developer.arm.com/downloads/-/arm-compiler-for-linux) | 23.04   | <https://developer.arm.com/downloads/-/arm-compiler-for-linux>                    |
 
 ## CPU and Memory
 
