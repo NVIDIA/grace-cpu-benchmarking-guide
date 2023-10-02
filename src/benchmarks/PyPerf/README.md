@@ -1,3 +1,0 @@
-# pyperf
-
-Leo Aqrabawi
