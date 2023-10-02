@@ -10,7 +10,7 @@ NAMD has supported Arm64 since 2014, and the following are instructions for buil
 
 The following script will install NAMD's dependencies to the `./build/` directory. Charm++ version 7.0.0 does not support targeting the Armv9 architecture, so Armv8 is used instead. 
 
-```
+```bash
 #!/bin/bash
 
 set -e
@@ -68,7 +68,7 @@ cd ..
 
 The following script will download and compile NAMD in the `./build/` directory. We recommend using GCC version 12.3 or later as it can target the `neoverse-v2` architecture. If one is not available, the `sed` command below should be removed as the architecture will not be recognized. 
 
-```
+```bash
 #!/bin/bash
 set -e
 if [[ ! -a build ]]; then

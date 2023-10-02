@@ -76,7 +76,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 The following commands download and compile STREAM with a total memory footprint of approximately 2.7GB, which is sufficient to exceed the L3 cache without excessive runtime. The general rule for running STREAM is that each array must be at least 4x the size of the sum of all the last-level caches used in the run, or 1 Million elements, whichever is larger.
 
 ```bash
-wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c &&
+wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
 gcc -Ofast -march=native -fopenmp \
   	-DSTREAM_ARRAY_SIZE=120000000 -DNTIMES=200 \
   	-o stream_openmp.exe stream.c
