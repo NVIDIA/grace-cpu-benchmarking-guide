@@ -2,7 +2,7 @@
 
 - [How to Use This Guide](README.md)
 - [Platform Configuration](platform.md)
-- [Foundational Benchmarks](foundations/README.md)
+- [Foundational Benchmarks](foundations/index.md)
     - [Speed-of-light FMA](foundations/FMA/README.md)
     - [STREAM](foundations/STREAM/README.md)
 - [Common Benchmarks](benchmarks/README.md)
