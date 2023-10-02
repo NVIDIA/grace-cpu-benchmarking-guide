@@ -19,10 +19,7 @@ mathjax-support = true
 copy-fonts = true
 no-section-label = false
 git-repository-icon = "fa-github"
-git-repository-url = "https://gitlab-master.nvidia.com/jlinford/grace-cpu-benchmarking-guide"
-edit-url-template = "https://gitlab-master.nvidia.com/-/ide/project/jlinford/grace-cpu-benchmarking-guide/edit/main/-/{path}"
-# Release
-#git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
-#edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/master/{path}"
+git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
+edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/master/{path}"
 
 [output.linkcheck]

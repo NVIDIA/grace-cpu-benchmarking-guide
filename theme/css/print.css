@@ -23,7 +23,7 @@
 }
 
 code {
-    background-color: #666666;
+    /* background-color: #666666; */
     border-radius: 5px;
 
     /* Force background to be printed in Chrome */

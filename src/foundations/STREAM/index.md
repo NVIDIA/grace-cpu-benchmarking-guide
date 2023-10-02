@@ -35,7 +35,7 @@ commands download and compile STREAM with a total memory footprint of approximat
 Example of the STREAM Execution Output:
 
 ```
-jlinford@fc01-gg01:~$ OMP_NUM_THREADS=72 OMP_PROC_BIND=spread numactl -m0,1 ./stream_openmp.exe
+$ OMP_NUM_THREADS=72 OMP_PROC_BIND=spread numactl -m0,1 ./stream_openmp.exe
 -------------------------------------------------------------
 STREAM version $Revision: 5.10 $
 -------------------------------------------------------------

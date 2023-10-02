@@ -1,6 +1,6 @@
 # [NVIDIA Grace CPU Benchmarking Guide][1]
 
-**:warning: This is the guide's source code, not [the published guide][1]. :warning:**  It's much easier to read and navigate the published guide: https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/
+**:warning: This is the guide's source code, not [the published guide][1]. :warning:**  It's much easier to read and navigate the published guide: <https://nvidia.github.io/grace-cpu-benchmarking-guide/>
 
 
 ## Working with a local copy
@@ -30,4 +30,4 @@ Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 
 
-[1]: <https://jlinford.gitlab-master-pages.nvidia.com/grace-cpu-benchmarking-guide/> "NVIDIA Grace CPU Benchmarking Guide"
+[1]: <https://nvidia.github.io/grace-cpu-benchmarking-guide/> "NVIDIA Grace CPU Benchmarking Guide"

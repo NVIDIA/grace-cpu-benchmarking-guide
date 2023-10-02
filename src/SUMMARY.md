@@ -31,4 +31,3 @@
 ----------------------------
 
 [Additional Resources](resources.md)
-[Contributors](contributors.md)
