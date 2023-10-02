@@ -12,7 +12,6 @@
     - [NAS Parallel Benchmarks](benchmarks/NPB/index.md)
 - [Applications](applications/index.md)
     - [WRF](applications/WRF/index.md)
-    - [OpenFOAM](applications/OpenFOAM/index.md)
     - [NAMD](applications/NAMD/index.md)
 - [Developing for NVIDIA Grace](developer/index.md)
     - [Arm SIMD Instructions](developer/vectorization.md)
