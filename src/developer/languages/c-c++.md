@@ -37,7 +37,7 @@ gcc -dM -E -mcpu=native - < /dev/null | grep ARM_FEATURE
 
 For example, on the NVIDIA Grace CPU with GCC 12.3, we see "`__ARM_FEATURE_ATOMICS 1`" indicating that LSE atomics are enabled:
 ```c
-jlinford@fc01-gg01:~$ gcc -dM -E -mcpu=native - < /dev/null | grep ARM_FEATURE
+$ gcc -dM -E -mcpu=native - < /dev/null | grep ARM_FEATURE
 #define __ARM_FEATURE_ATOMICS 1
 #define __ARM_FEATURE_SM3 1
 #define __ARM_FEATURE_SM4 1

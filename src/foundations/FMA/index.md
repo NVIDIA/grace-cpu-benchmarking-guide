@@ -11,7 +11,7 @@ Grace can perform 16 FP64 FMA operations per cycle, so a Grace CPU with a nomina
 
 Example of the fp64_sve_pred_fmla.x Execution Output
 ```bash
-jlinford@fc01-gg01:~/arm-kernels$ perf stat ./arithmetic/fp64_sve_pred_fmla.x
+$ perf stat ./arithmetic/fp64_sve_pred_fmla.x
 4( 16(SVE_FMLA_64b) );
 Iterations;100000000
 Total Inst;6400000000

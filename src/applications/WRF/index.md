@@ -117,16 +117,16 @@ Other rows in the configuration options may not achieve the best performance.
 Choose the default option for nesting (i.e. `1`). 
 
 Make sure `configure` outputs messages like these:
- - `Will use NETCDF in dir: /home/jlinford/workspace/benchmarks/WRF/opt`
- - `Will use HDF5 in dir: /home/jlinford/workspace/benchmarks/WRF/opt`
+ - `Will use NETCDF in dir: /home/nvidia/workspace/benchmarks/WRF/opt`
+ - `Will use HDF5 in dir: /home/nvidia/workspace/benchmarks/WRF/opt`
 If you see errors finding NetCDF or HDF5, resolve those errors before proceeding.
 
 ```bash
 ./configure
 checking for perl5... no
 checking for perl... found /usr/bin/perl (perl)
-Will use NETCDF in dir: /home/jlinford/workspace/benchmarks/WRF/opt
-Will use HDF5 in dir: /home/jlinford/workspace/benchmarks/WRF/opt
+Will use NETCDF in dir: /home/nvidia/workspace/benchmarks/WRF/opt
+Will use HDF5 in dir: /home/nvidia/workspace/benchmarks/WRF/opt
 PHDF5 not set in environment. Will configure WRF for use without.
 Will use 'time' to report timing information
 $JASPERLIB or $JASPERINC not found in environment, configuring to build without grib2 I/O...
