@@ -8,9 +8,9 @@ Use the menu in the sidebar to navigate quickly through the guide.  The guide is
 
 * [Platform Configuration](platform.md): Begin by tuning your system for benchmarking.  These quick start instructions help optimize the platform configuration.
 * [Foundational Benchmarks](foundations/index.md): After checking the platform configuration, [sanity check](foundations/index.md) to confirm the system is healthy and well-tuned.
-* [Common Benchmarks](benchmarks/README.md): Industry-recognized benchmarks and miniapps that represent the performance of key workloads.
-* [Applications](applications/README.md): Guides for maximizing the performance of full applications.
-* [Developer Best Practices](developer/README.md): General best practices for developing for NVIDIA Grace.
+* [Common Benchmarks](benchmarks/index.md): Industry-recognized benchmarks and miniapps that represent the performance of key workloads.
+* [Applications](applications/index.md): Guides for maximizing the performance of full applications.
+* [Developer Best Practices](developer/index.md): General best practices for developing for NVIDIA Grace.
 
 The sections can be read in any order, but we strongly recommend you begin by [tuning](platform.md) and [sanity checking](foundations/index.md) your platform.
 
