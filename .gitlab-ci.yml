@@ -14,10 +14,8 @@ pages:
     cargo install --force --version ${MDBOOK_VERSION} mdbook 
     cargo install --force mdbook-external-links mdbook-linkcheck
   script: |
-    mdbook build -d public
-    rm -rf public/linkcheck
-    mv public/html/* public
-    rmdir public/html
+    mdbook build -d book
+    mv book/html public
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   artifacts:
