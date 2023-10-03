@@ -1,3 +1,5 @@
+<font size="1">
+
 # Notice
 
 This document is provided for information purposes only and shall not be regarded as a warranty of a certain functionality, condition, or quality of a product. NVIDIA Corporation ("NVIDIA") makes no representations or warranties, expressed or implied, as to the accuracy or completeness of the information contained in this document and assumes no responsibility for any errors contained herein. NVIDIA shall have no liability for the consequences or use of such information or for any infringement of patents or other rights of third parties that may result from its use. This document is not a commitment to develop, release, or deliver any Material (defined below), code, or functionality.
@@ -32,3 +34,4 @@ OpenCL is a trademark of Apple Inc. used under license to the Khronos Group Inc.
 ## Copyright 
 
 © 2023 NVIDIA Corporation & Affiliates. All rights reserved.
+</font>
