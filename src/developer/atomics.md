@@ -5,7 +5,7 @@ Efficient synchronization is critical to achieving good performance in applicati
 
 ## The Arm Memory Model
 
-One of the most signiﬁcant diﬀerences between Arm and the x86 CPUs is their memory model. The Arm architecture has a weak memory model that allows for more compiler and hardware optimization to boost system performance. This differs from the x86 architecture Total Store Order (TSO) model. Diﬀerent memory models can cause low-level codes (for example, drivers) to function well on one architecture but encounter performance problem or failure on the other.
+One of the most significant differences between Arm and the x86 CPUs is their memory model. The Arm architecture has a weak memory model that allows for more compiler and hardware optimization to boost system performance. This differs from the x86 architecture Total Store Order (TSO) model. Different memory models can cause low-level codes (for example, drivers) to function well on one architecture but encounter performance problem or failure on the other.
 
 **Note:** You should only be interested in the Arm memory model if you are writing low level code, such as assembly language. 
 
@@ -18,9 +18,9 @@ Arm is not the only architecture that uses a weak memory model. If your applicat
 
 ## Large-System Extension (LSE) Atomic Instructions
 
-All server-class Arm64 processors, such as NVIDIA Grace, have support for the Large-System Extension (LSE), which was ﬁrst introduced in Armv8.1. LSE provides low-cost atomic operations that can improve system throughput for thread communication, locks, and mutexes. On recent Arm64 CPUs, the improvement can be up to an order of magnitude when using LSE atomics instead of load/store exclusives. This improvement is not generally true for older Arm64 CPUs like the Marvell ThunderX2 or the Fujitsu A64FX (refer to [these slides from the ISC 2022 AHUG Workshop](https://agenda.isc-hpc.com/media/slides_pdf/0900_Arm_HPC_User_Group_at_ISC22_wxIExtw.pdf) for more information).
+All server-class Arm64 processors, such as NVIDIA Grace, have support for the Large-System Extension (LSE), which was first introduced in Armv8.1. LSE provides low-cost atomic operations that can improve system throughput for thread communication, locks, and mutexes. On recent Arm64 CPUs, the improvement can be up to an order of magnitude when using LSE atomics instead of load/store exclusives. This improvement is not generally true for older Arm64 CPUs like the Marvell ThunderX2 or the Fujitsu A64FX (refer to [these slides from the ISC 2022 AHUG Workshop](https://agenda.isc-hpc.com/media/slides_pdf/0900_Arm_HPC_User_Group_at_ISC22_wxIExtw.pdf) for more information).
 
-When building an application from source, the compiler needs to generate LSE atomic instructions for applications that use atomic operations. For example, the code of databases such as PostgreSQL contain atomic constructs: C++11 code with `std::atomic` statements that translate into atomic operations. Since GCC 9.4, GCC’s `-mcpu=native` ﬂag enables all instructions supported by the host CPU, including LSE. To conﬁrm that LSE instructions are created, the output of objdump command-line utility should contain LSE instructions:
+When building an application from source, the compiler needs to generate LSE atomic instructions for applications that use atomic operations. For example, the code of databases such as PostgreSQL contain atomic constructs: C++11 code with `std::atomic` statements that translate into atomic operations. Since GCC 9.4, GCC's `-mcpu=native` flag enables all instructions supported by the host CPU, including LSE. To confirm that LSE instructions are created, the output of objdump command-line utility should contain LSE instructions:
 ```bash
 $ objdump -d app | grep -i 'cas\|casp\|swp\|ldadd\|stadd\|ldclr\|stclr\|ldeor\|steor\|ldset\|stset\|ldsmax\|stsmax\|ldsmin\|stsmin\|ldumax\|stumax\|ldumin\|stumin' | wc -l
 ```

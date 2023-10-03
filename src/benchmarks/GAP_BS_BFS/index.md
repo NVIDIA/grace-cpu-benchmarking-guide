@@ -41,7 +41,7 @@ This command will pin our application to CPU socket 0 and physical cores 0-71.
 
 ## Output
 
-When you run bfs using the command above on a Grace machine with atleast 72 cores, using Kronecker graph of scale 26 and degree 16 for 64 trials, we see an average time of approximately 0.0395 ± 0.001 ms as shown in the figure below.
+When you run bfs using the command above on a Grace machine with atleast 72 cores, using Kronecker graph of scale 26 and degree 16 for 64 trials, we see an average time of approximately 0.0395 +/- 0.001 ms as shown in the figure below.
 
 [![Example Output](sample_output.png)](sample_output.png)
 

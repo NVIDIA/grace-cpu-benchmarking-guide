@@ -24,11 +24,11 @@ Many recent Arm64 CPUs provide the same peak theoretical performance for NEON an
 
 Fortunately, auto-vectorizing compilers are usually the best choice when programming Arm SIMD ISAs. The compiler will generally make the best decision on when to use SVE or NEON, and it will take advantage of SVE's advanced auto-vectorization features more easily than a human coding in intrinsics or an assembly can. 
 
-Avoid writing SVE or NEON intrinsics. To realize the best performance for a loop, use the appropriate command-line options with your favorite auto-vectorizing compiler. You might need to use compiler directives or make changes in the high-level code to facilitate auto-vectorization, but this will be much easier and more maintainable than writing intrinsics. Leave the ﬁner details to the compiler and focus on code patterns that auto-vectorize well.
+Avoid writing SVE or NEON intrinsics. To realize the best performance for a loop, use the appropriate command-line options with your favorite auto-vectorizing compiler. You might need to use compiler directives or make changes in the high-level code to facilitate auto-vectorization, but this will be much easier and more maintainable than writing intrinsics. Leave the finer details to the compiler and focus on code patterns that auto-vectorize well.
 
 ## Compiler-Driven Auto-Vectorization
 
-The key to maximizing auto-vectorization is to allow the compiler to take advantage of the available hardware features. By default, GCC and LLVM compilers take a conservative approach and do not enable advanced features unless explicitly told to do so. The easiest way to enable all available features for GCC or LLVM is to use the `-mcpu` compiler ﬂag. If you are compiling on the same CPU on which the code will run, use `-mcpu=native`. Otherwise, you can use `-mcpu=<target>`,  where `<target>`is one of the CPU identiﬁers, for example, `-mcpu=neoverse-v2`. 
+The key to maximizing auto-vectorization is to allow the compiler to take advantage of the available hardware features. By default, GCC and LLVM compilers take a conservative approach and do not enable advanced features unless explicitly told to do so. The easiest way to enable all available features for GCC or LLVM is to use the `-mcpu` compiler flag. If you are compiling on the same CPU on which the code will run, use `-mcpu=native`. Otherwise, you can use `-mcpu=<target>`,  where `<target>`is one of the CPU identifiers, for example, `-mcpu=neoverse-v2`. 
 
 The NVIDIA compilers take a more aggressive approach. By default, these compilers assume that the machine on which you are compiling is the machine on which you will run and enable all available hardware features that were detected at compile time. When compiling wiht the NVIDA compilers natively on Grace, you do not need additional flags.
 
@@ -55,7 +55,7 @@ u64x2 = vreinterpretq_u64_s64(s64x2);
 
 Unfortunately, some codes written for other SIMD ISAs rely on these kinds of implicit conversions.  If you see errors about "no known conversion" in a code that builds for AVX but does not build for NEON, you might need to relax GCC's vector conversion rules:
 ```
-/tmp/velox/third_party/xsimd/include/xsimd/types/xsimd_batch.hpp:35:11: note:   no known conversion for argument 1 from ‘xsimd::batch<long int>' to ‘const xsimd::batch<long unsigned int>&'
+/tmp/velox/third_party/xsimd/include/xsimd/types/xsimd_batch.hpp:35:11: note:   no known conversion for argument 1 from 'xsimd::batch<long int>' to 'const xsimd::batch<long unsigned int>&'
 ```
 To allow implicit conversions between vectors with differing numbers of elements and/or incompatible element types, use the `-flax-vector-conversions` flag.  This flag should be fine for legacy code, but it should not be used for new code.  The safest option is to use the appropriate `vreinterpretq` calls.
 
@@ -112,11 +112,11 @@ When programs contain code with x86 intrinsics, drop-in intrinsic translation to
 #include "simde/x86/avx2.h"
 ```
 
-SIMDe provides a quick starting point to port performance critical codes to Arm64. It shortens the time needed to get a working program that can be used to extract proﬁles and to identify hot paths in the code. After a proﬁle is established, the hot paths can be rewritten to avoid the overhead of the generic translation.
+SIMDe provides a quick starting point to port performance critical codes to Arm64. It shortens the time needed to get a working program that can be used to extract profiles and to identify hot paths in the code. After a profile is established, the hot paths can be rewritten to avoid the overhead of the generic translation.
 
 Since you are rewriting your x86 intrinsics, you might want to take this opportunity to create a more portable version.  Here are some suggestions to consider:
 
- - Rewrite in native C/C++, Fortran, or another high-level compiled language. Compilers are constantly improving, and technologies like Arm SVE enable the auto-vectorization of codes that formally would not vectorize. You can avoid platform-speciﬁc intrinsics entirely and let the compiler do all the work.
+ - Rewrite in native C/C++, Fortran, or another high-level compiled language. Compilers are constantly improving, and technologies like Arm SVE enable the auto-vectorization of codes that formally would not vectorize. You can avoid platform-specific intrinsics entirely and let the compiler do all the work.
  - If your application is written in C++, use `std::experimental::simd` from the C++ Parallelism Technical Specification V2 by using the `<experimental/simd>` header.
  - Use the [SLEEF Vectorized Math Library](https://sleef.org/) as a header-based set of "portable intrinsics".
  - Instead of Time Stamp Counter (TSC) RDTSC intrinsics, use standards-compliant portable timers, for example, `std::chrono` (C++), `clock_gettime` (C/POSIX), `omp_get_wtime` (OpenMP), `MPI_Wtime` (MPI), and so on.

@@ -1,6 +1,6 @@
 # Java on NVIDIA Grace
 
-Java is well supported and generally performant out-of-the-box on Arm64. While Java 8 is fully supported on Arm64, some customers have not been able to obtain the CPU’s full performance beneﬁt until after switching to Java 11.
+Java is well supported and generally performant out-of-the-box on Arm64. While Java 8 is fully supported on Arm64, some customers have not been able to obtain the CPU's full performance benefit until after switching to Java 11.
 
 This section includes specific details about building and tuning Java applications on Arm64.
 

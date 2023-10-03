@@ -9,7 +9,7 @@ STREAM is the standard for measuring memory bandwidth. The STREAM benchmark is a
 
 The kernels are executed in sequence in a loop, and the following parameters configure STREAM:
 
-- `STREAM_ARRAY_SIZE`: The number of double-precision elements in each array. When you measure the bandwidth to/from main memory, you must select a suﬃciently large array size.
+- `STREAM_ARRAY_SIZE`: The number of double-precision elements in each array. When you measure the bandwidth to/from main memory, you must select a sufficiently large array size.
 - `NTIMES`: The number of iterations of the test loop.
 
 Use the STREAM benchmark to check LPDDR5X memory bandwidth. The following

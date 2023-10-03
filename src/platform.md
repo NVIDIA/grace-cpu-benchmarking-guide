@@ -1,6 +1,6 @@
 # Platform Configuration
 
-Before benchmarking,you should check whether the platform conﬁguration is optimal for the target benchmark. The optimal conﬁguration might vary by benchmark, but there are some common high- level settings of which you should be aware. For a more comprehensive guide to platform tuning, refer to the NVIDIA Grace Hopper and Grace CPU Platform Tuning Guide.
+Before benchmarking,you should check whether the platform configuration is optimal for the target benchmark. The optimal configuration might vary by benchmark, but there are some common high- level settings of which you should be aware. For a more comprehensive guide to platform tuning, refer to the NVIDIA Grace Hopper and Grace CPU Platform Tuning Guide.
 
 ## Software Environment
 
