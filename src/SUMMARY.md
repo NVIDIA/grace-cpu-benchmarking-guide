@@ -30,3 +30,5 @@
 ----------------------------
 
 [Additional Resources](resources.md)
+[Notice](notice.md)
+

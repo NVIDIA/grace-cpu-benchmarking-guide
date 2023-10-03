@@ -11,6 +11,8 @@ create-missing = false
 
 [preprocessor.external-links]
 
+[output.linkcheck]
+
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "coal"
@@ -21,5 +23,3 @@ no-section-label = false
 git-repository-icon = "fa-github"
 git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
 edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/master/{path}"
-
-[output.linkcheck]

@@ -13,10 +13,3 @@ Use the menu in the left pane to quickly navigate through the guide. The guide i
 * [Developer Best Practices](developer/index.md): This section has general best practices information to develop for NVIDIA Grace.
 
 The sections can be read in any order, but we strongly recommend you begin by [tuning](platform.md) and [sanity checking](foundations/index.md) your platform.
-
-
-## License
-
-Unless otherwise indicated, this work is licensed under
-[The 3-Clause BSD License](https://opensource.org/license/bsd-3-clause/).  Individual examples or attached source code may be under a different license.  Check the related README or LICENSE files.
-
