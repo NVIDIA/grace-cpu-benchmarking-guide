@@ -26,71 +26,71 @@ In addition, we strongly recommend installing the following software packages:
 
 ## CPU and Memory
 
-Use the `performance` CPU frequency governor:
+* Use the `performance` CPU frequency governor:
+  
+    ```bash
+    echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    ```
 
-```bash
-echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-```
+* Disable address space layout randomization (ASLR):
 
-Disable address space layout randomization (ASLR):
+    ```bash
+    sudo sysctl -w kernel.randomize_va_space=0
+    ```
 
-```bash
-sudo sysctl -w kernel.randomize_va_space=0
-```
+* Drop the caches:
+    
+    ```bash
+    echo 3 > /proc/sys/vm/drop_caches
+    ```
 
-Drop the caches:
+* Set the kernel dirty page values to the default values:
 
-```bash
-echo 3 > /proc/sys/vm/drop_caches
-```
+    ```bash
+    echo 10 > /proc/sys/vm/dirty_ratio
+    echo 5 > /proc/sys/vm/dirty_background_ratio
+    ```
 
-Set the kernel dirty page values to the default values:
+* To reduce disk I/O, check for dirty page writeback every 60 seconds:
 
-```bash
-echo 10 > /proc/sys/vm/dirty_ratio
-echo 5 > /proc/sys/vm/dirty_background_ratio
-```
+    ```bash
+    echo 6000 > /proc/sys/vm/dirty_writeback_centisecs
+    ```
 
-To reduce disk I/O, check for dirty page writeback every 60 seconds:
+* Disable the NMI watchdog
 
-```bash
-echo 6000 > /proc/sys/vm/dirty_writeback_centisecs
-```
-
-Disable the NMI watchdog
-
-```bash
-echo 0 > /proc/sys/kernel/watchdog
-```
+    ```bash
+    echo 0 > /proc/sys/kernel/watchdog
+    ```
 
 ## Networking
 
-Set the networking connection tracking size:
+* Set the networking connection tracking size:
 
-```bash
-echo 512000 | sudo tee /proc/sys/net/netfilter/nf_conntrack_max
-```
+    ```bash
+    echo 512000 | sudo tee /proc/sys/net/netfilter/nf_conntrack_max
+    ```
 
-Before kicking off the test, allow the kernel to reuse TCP ports which may be in a TIME_WAIT state:
+* Before starting the test, allow the kernel to reuse TCP ports which may be in a `TIME_WAIT` state:
 
-```bash
-echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse
-```
+    ```bash
+    echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse
+    ```
 
 ## Device I/O
 
-For full power for generic devices:
+* For full power for generic devices:
 
-```bash
-for i in `find /sys/devices/*/power/control` ; do
-    echo 'on' > ${i}
-done
-```
+    ```bash
+    for i in `find /sys/devices/*/power/control` ; do
+        echo 'on' > ${i}
+    done
+    ```
 
-For full power for PCI devices:
+* For full power for PCI devices:
 
-```bash
-for i in `find /sys/bus/pci/devices/*/power/control` ; do
-    echo 'on' > ${i}
-done
-```
+    ```bash
+    for i in `find /sys/bus/pci/devices/*/power/control` ; do
+        echo 'on' > ${i}
+    done
+    ```
