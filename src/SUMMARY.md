@@ -3,7 +3,7 @@
 - [How to Use This Guide](index.md)
 - [Platform Configuration](platform.md)
 - [Foundational Benchmarks](foundations/index.md)
-    - [Speed-of-light FMA](foundations/FMA/index.md)
+    - [Fused Multiply Add](foundations/FMA/index.md)
     - [STREAM](foundations/STREAM/index.md)
 - [Common Benchmarks](benchmarks/index.md)
     - [SPEC CPU 2017](benchmarks/SPEC_CPU_2017/index.md)

@@ -9,15 +9,15 @@ There are many C/C++ compilers available for NVIDIA Grace including:
 
 ## Selecting a Compiler
 
-Which compiler you use will depend on your application's needs.  If in doubt, try the NVIDIA HPC Compiler first as this compiler will always have the most recent updates and enhancements for Grace.  Or, if you prefer Clang, [NVIDIA provides builds of Clang for NVIDIA Grace](https://developer.nvidia.com/grace/clang) that are supported by NVIDIA and certified as a CUDA host compiler.  GCC, ACfL, and HPE Cray Compilers also have their own advantages.  As a general strategy, default to an NVIDIA-provided compiler and fall back to a third-party as needed.  
+The compiler you use depends on your application’s needs. If in doubt, try the [NVIDIA HPC Compiler](https://developer.nvidia.com/hpc-sdk) ﬁrst because this compiler will always have the most recent updates and enhancements for Grace. If you prefer Clang, NVIDIA provides builds of [Clang for NVIDIA Grace](https://developer.nvidia.com/grace/clang) that are supported by NVIDIA and certiﬁed as a CUDA host compiler. GCC, ACfL, and HPE Cray Compilers also have their own advantages. As a general strategy, default to an NVIDIA-provided compiler and fall back to a third-party as needed.
 
-Whenever possible, use the latest compiler version available on your system. Newer compilers provide better support and optimizations for Arm64 processors, and many codes will demonstrate significantly better performance when using newer compilers.  
+When possible, use the latest compiler version that is available on your system. Newer compilers provide better support and optimizations for Grace, and when using newer compilers, many codes will demonstrate signiﬁcantly better performance.
 
 ## Recommended Compiler Flags
 
-The NVIDIA HPC Compilers are a direct decedent of the popular PGI compilers, so they accept PGI flags as well as many GCC or Clang compiler flags. These compilers include the NVFORTRAN, NVC++ and NVC compilers. They work in conjunction with an assembler, linker, libraries and header files on your target system, and include a CUDA toolchain, libraries and header files for GPU computing. [See the users guide for a detailed description of all supported compiler flags](https://docs.nvidia.com/hpc-sdk/compilers/hpc-compilers-user-guide/index.html).  The [freely-available NVIDIA HPC SDK](https://developer.nvidia.com/hpc-sdk) is the best way to quickly get started with the NVIDIA HPC Compiler.
+The NVIDIA HPC Compilers accept PGI ﬂags and many GCC or Clang compiler ﬂags. These compilers include the NVFORTRAN, NVC++, and NVC compilers. They work with an assembler, linker, libraries, and header ﬁles on your target system, and include a CUDA toolchain, libraries and header ﬁles for GPU computing. Refer to the [NVIDIA HPC Compiler's User's Guide](https://docs.nvidia.com/hpc-sdk/compilers/hpc-compilers-user-guide/index.html) for more information. The freely [NVIDIA HPC SDK](https://developer.nvidia.com/hpc-sdk) is the best way to quickly get started with the NVIDIA HPC Compiler.
 
-GCC and Clang/LLVM operate more-or-less the same on Arm64 as on other architectures except for the `-mcpu` flag.  On Arm64, the `-mcpu` flag both specifies the appropriate architecture and the tuning strategy.  It's generally better to use `-mcpu` instead of `-march` or `-mtune` on Arm64.  You can find additional details in [this presentation given at Stony Brook University](https://www.stonybrook.edu/commcms/ookami/_pdf/Linford_OokamiUGM_2022.pdf).
+Most compiler flags for GCC and Clang/LLVM operate the same on Arm64 as on other architectures except for the `-mcpu` flag.  On Arm64, this flag both specifies the appropriate architecture and the tuning strategy.  It is generally better to use `-mcpu` instead of `-march` or `-mtune` on Grace.  You can find additional details in [this presentation given at Stony Brook University](https://www.stonybrook.edu/commcms/ookami/_pdf/Linford_OokamiUGM_2022.pdf).
 
 CPU          | Flag                | GCC version | LLVM verison
 -------------|---------------------|-------------|-------------
@@ -25,12 +25,12 @@ NVIDIA Grace | `-mcpu=neoverse-v2` | 12.3+       | 16+
 Ampere Altra | `-mcpu=neoverse-n1` | 9+          | 10+
 Any Arm64    | `-mcpu=native`      | 9+          | 10+
 
-If you're cross compiling, use the appropriate `-mcpu` option for your target CPU, e.g. use `-mcpu=neoverse-v2` to target NVIDIA Grace when compiling on an AWS Graviton 3.
+If you're cross compiling, use the appropriate `-mcpu` option for your target CPU, for example, to target NVIDIA Grace when compiling on an AWS Graviton 3 use `-mcpu=neoverse-v2`.
 
 
-## Compiler-supported Hardware Features
+## Compiler-Supported Hardware Features
 
-The common `-mcpu=native` flag enables all instructions supported by the host CPU.  You can check which Arm features GCC will enable with the `-mcpu=native` flag by using this command:
+The common `-mcpu=native` flag enables all instructions supported by the host CPU.  You can check which Arm features GCC will enable with the `-mcpu=native` flag by running the following command:
 ```bash
 gcc -dM -E -mcpu=native - < /dev/null | grep ARM_FEATURE
 ```
@@ -77,25 +77,17 @@ $ gcc -dM -E -mcpu=native - < /dev/null | grep ARM_FEATURE
 
 ## Porting SSE or AVX Intrinsics
 
-Header-based intrinsics translation tools like [SIMDe](https://github.com/simd-everywhere/simde) and [SSE2NEON](https://github.com/DLTcollab/sse2neon) are a great way to quickly get a prototype running on Arm64.
-These tools automatically translate x86 intrinsics to SVE or NEON intrinsics (see [Arm SIMD Instructions](../vectorization.md)). 
-This approach provides a quick starting point in porting performance critical codes
-and shortens the time needed to get a working program that then
-can be used to extract profiles and to identify hot paths in the code.  Once a profile is
-established, the hot paths can be rewritten to
-avoid the overhead of the automatic translation of intrinsics.
+Header-based intrinsics translation tools, such as [SIMDe](https://github.com/simd-everywhere/simde) and [SSE2NEON](https://github.com/DLTcollab/sse2neon) are a great way to quickly get a prototype running on Arm64. These tools automatically translate x86 intrinsics to SVE or NEON intrinsics (refer to [Arm Single-Instruction Multiple-Data Instructions](../vectorization.md)). This approach provides a quick starting point when porting performance critical codes and shortens the time needed to get a working program that can be used to extract proﬁles and to identify hot paths in the code. After a proﬁle is established, the hot paths can be rewritten to avoid the overhead of the automatic translation of intrinsics.
 
-Note that GCC's `__sync` built-ins are outdated and may be biased towards the x86 memory model.  
+**Note:** GCC's `__sync` built-ins are outdated and might be biased towards the x86 memory model.  
 Use `__atomic` versions of these functions instead of the `__sync` versions.  
-See [the GCC documentation](https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html) for more details.
+[Refer to the GCC documentation for more information](https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html).
 
 
-## Signed vs. Unsigned char
-The C standard doesn't specify the signedness of the `char` type. On x86, many compilers assume `char` is signed by
-default, but on Arm, compilers often assume it is unsigned by default. This difference can be addressed by using
-standard int types that explicitly specify the signedness (e.g. `uint8_t` and `int8_t`) or by explicitly specifying
-`char` signedness with compiler flags, e.g. `-fsigned-char`.
+## Signedness of the `char` Type
 
+The C standard does not specify the signedness of the `char` type. On x86, many compilers assume that `char` is signed by default, but on Arm64, compilers often assume it is unsigned by default. This difference can be addressed by using standard integer types that specify signedness (for example, `uint8_t` and `int8_t`) or by specifying `char` signedness with compiler ﬂags, for example, `-fsigned-char` or `-funsigned-char`.
 
 ## Arm Instructions for Machine Learning
-NVIDIA Grace supports [Arm dot-product instructions](https://community.arm.com/developer/tools-software/tools/b/tools-software-ides-blog/posts/exploring-the-arm-dot-product-instructions) commonly used for Machine Learning (quantized) inference workloads, and [Half precision floating point (FP16)](https://developer.arm.com/documentation/100067/0612/Other-Compiler-specific-Features/Half-precision-floating-point-intrinsics).  These features enable performant and power efficient machine learning by doubling the number of operations per second and reducing the memory footprint compared to single precision floating point, all while still enjoying large dynamic range.  Compiling with `-mcpu=native` will enable these features, when available.
+
+NVIDIA Grace supports [Arm dot-product instructions](https://community.arm.com/developer/tools-software/tools/b/tools-software-ides-blog/posts/exploring-the-arm-dot-product-instructions) (commonly used for Machine Learning (quantized) inference workloads) and [half precision floating point (FP16)](https://developer.arm.com/documentation/100067/0612/Other-Compiler-specific-Features/Half-precision-floating-point-intrinsics). These features enable performant and power eﬃcient machine learning by doubling the number of operations per second and reducing the memory footprint compared to single precision ﬂoating point, all while  enjoying large dynamic range. These features are enabled automatically in the NVIDIA compilers. To enable these features in GNU or LLVM compilers, compile with `-mcpu=native` or `-mcpu=neoverse-v2`.

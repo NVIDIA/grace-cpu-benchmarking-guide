@@ -1,14 +1,12 @@
 # Platform Configuration
 
-Before benchmarking, it's important to check the platform configuration is optimal for the target benchmark.
-The optimal configuration may vary by benchmark, but there are some common high-level settings to be aware of.
-For a more comprehensive guide to platform tuning, see the NVIDIA Grace Hopper and Grace CPU Platform Tuning Guide.
+Before benchmarking,you should check whether the platform conﬁguration is optimal for the target benchmark. The optimal conﬁguration might vary by benchmark, but there are some common high- level settings of which you should be aware. For a more comprehensive guide to platform tuning, refer to the NVIDIA Grace Hopper and Grace CPU Platform Tuning Guide.
 
 ## Software Environment
 
-The bare minimum requirements are:
+Here are the minimum software requirements:
 
-- Install all available software updates, e.g. `sudo apt update && sudo apt upgrade` on Ubuntu.
+- Install all available software updates, for example,  `sudo apt update && sudo apt upgrade` on Ubuntu.
 - GNU binutils should be at version 2.38 or later. `ldd --version` will report the binutils version.
 - GCC should be at version 12.3 or later. `gcc --version` will report the GCC version.
  
@@ -40,20 +38,20 @@ Disable address space layout randomization (ASLR):
 sudo sysctl -w kernel.randomize_va_space=0
 ```
 
-Drop caches:
+Drop the caches:
 
 ```bash
 echo 3 > /proc/sys/vm/drop_caches
 ```
 
-Set kernel dirty page values to defaults:
+Set the kernel dirty page values to the default values:
 
 ```bash
 echo 10 > /proc/sys/vm/dirty_ratio
 echo 5 > /proc/sys/vm/dirty_background_ratio
 ```
 
-Check for dirty page writeback every 60 seconds to reduce disk I/O (the default is 5 seconds):
+To reduce disk I/O, check for dirty page writeback every 60 seconds:
 
 ```bash
 echo 6000 > /proc/sys/vm/dirty_writeback_centisecs
@@ -67,13 +65,13 @@ echo 0 > /proc/sys/kernel/watchdog
 
 ## Networking
 
-Set networking connection tracking size:
+Set the networking connection tracking size:
 
 ```bash
 echo 512000 | sudo tee /proc/sys/net/netfilter/nf_conntrack_max
 ```
 
-Allow the kernel to reuse TCP ports which may be in a TIME_WAIT state before kicking off the test:
+Before kicking off the test, allow the kernel to reuse TCP ports which may be in a TIME_WAIT state:
 
 ```bash
 echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse
@@ -81,7 +79,7 @@ echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse
 
 ## Device I/O
 
-Full power for generic devices:
+For full power for generic devices:
 
 ```bash
 for i in `find /sys/devices/*/power/control` ; do
@@ -89,7 +87,7 @@ for i in `find /sys/devices/*/power/control` ; do
 done
 ```
 
-Full power for PCI devices:
+For full power for PCI devices:
 
 ```bash
 for i in `find /sys/bus/pci/devices/*/power/control` ; do

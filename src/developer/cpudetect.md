@@ -1,6 +1,6 @@
 # Runtime CPU Detection
 
-There are several ways to determine the available Arm CPU resources and topology at runtime, including:
+You can determine the available Arm CPU resources and topology at runtime in the following ways:
 
  * CPU architecture and supported instructions
  * CPU manufacturer
@@ -12,9 +12,9 @@ There are several ways to determine the available Arm CPU resources and topology
 
 Well-established portable libraries like `libnuma` and `hwloc` are a great choice on Grace.  You can also use Arm's CPUID registers or query OS files.  Since many of these methods serve the same function, you should choose the method that best fits your application.
 
-If you're implementing your own approach, then please look at the Arm Architecture Registers, and especially the Main ID Register (MIDR_EL1): https://developer.arm.com/documentation/ddi0601/2020-12/AArch64-Registers/MIDR-EL1--Main-ID-Register
+If you are implementing your own approach, look at the Arm Architecture Registers, especially the Main ID Register `MIDR_EL1`: <https://developer.arm.com/documentation/ddi0601/2020-12/AArch64-Registers/MIDR-EL1--Main-ID-Register>.
 
-The source code for the `lscpu` utility is a great example of how to retrieve and use these registers.  For example, here's how to translate the CPU part number in the MIDR_EL1 register to a human-readable string: https://github.com/util-linux/util-linux/blob/master/sys-utils/lscpu-arm.c
+The source code for the `lscpu` utility is a great example of how to retrieve and use these registers.  For example, to learn how to translate the CPU part number in the `MIDR_EL1` register to a human-readable string read <https://github.com/util-linux/util-linux/blob/master/sys-utils/lscpu-arm.c>.
 
 Here's the output of `lscpu` on NVIDIA Grace-Hopper:
 ```
@@ -61,7 +61,7 @@ Vulnerabilities:
 
 ## CPU Hardware Capabilities
 
-To make your binaries more portable across various Arm64 CPUs, you can use Arm64 hardware capabilities to determine the available instructions at runtime.  For example, a CPU core compliant with Armv8.4 must support dot-product, but dot-products are optional in Armv8.2 and Armv8.3.  A developer wanting to build an application or library that can detect the supported instructions in runtime, can follow this example:
+To make your binaries more portable across various Arm64 CPUs, you can use Arm64 hardware capabilities to determine the available instructions at runtime. For example, a CPU core that is compliant with Armv8.4 must support a dot-product, but dot-products are optional in Armv8.2 and Armv8.3. A developer who wants to build an application or library that can detect the supported instructions in runtime, can use this example:
 
 ```c
 #include<sys/auxv.h>
@@ -74,11 +74,11 @@ To make your binaries more portable across various Arm64 CPUs, you can use Arm64
   has_sve_feature = hwcaps & HWCAP_SVE ? true : false;
 ```
 
-The full list of Arm64 hardware capabilities is defined in [glibc header file](https://github.com/bminor/glibc/blob/master/sysdeps/unix/sysv/linux/aarch64/bits/hwcap.h) and in the [Linux kernel](https://github.com/torvalds/linux/blob/master/arch/arm64/include/asm/hwcap.h).
+A complete list of Arm64 hardware capabilities is defined in the [glibc header file](https://github.com/bminor/glibc/blob/master/sysdeps/unix/sysv/linux/aarch64/bits/hwcap.h) and in the [Linux kernel](https://github.com/torvalds/linux/blob/master/arch/arm64/include/asm/hwcap.h).
 
 ## Example Source Code
 
-Here's a complete yet simple example code that higlights some of the methods mentioned above.
+Here's a complete yet simple example code that includes some of the methods mentioned above.
 
 ```c
 #include <stdio.h>

@@ -1,15 +1,15 @@
-# Speed-of-light Fused Multiply Add (FMA)
+# Fused Multiply Add (FMA)
 
-NVIDIA provides an open source suite of benchmarking microkernels for Arm CPUs. To
+NVIDIA provides an open source suite of benchmarking microkernels for Arm® CPUs. To
 allow precise counts of instructions and exercise specific functional units, these kernels
 are written in assembly language. To measure the peak floating point capability of a core
 and check the CPU clock speed, use a Fused Multiply Add (FMA) kernel.
 
 ## Reference Results
 
-Grace can perform 16 FP64 FMA operations per cycle, so a Grace CPU with a nominal CPU frequency of 3.3GHz should report between 52 and 53 Gop/sec.
+The key performance metric is giga-operations per second (Gop/sec).  Grace can perform 16 FP64 FMA operations per cycle, so a Grace CPU with a nominal CPU frequency of 3.3GHz should report between 52 and 53 Gop/sec.
 
-Example of the fp64_sve_pred_fmla.x Execution Output
+Here's an example of the fp64_sve_pred_fmla.x execution output:
 ```bash
 $ perf stat ./arithmetic/fp64_sve_pred_fmla.x
 4( 16(SVE_FMLA_64b) );
@@ -60,7 +60,7 @@ The benchmark score is reported in giga-operations per second (Gop/sec) near the
 the benchmark output. Grace can perform 16 FP64 FMA operations per cycle, so a Grace
 CPU with a nominal CPU frequency of 3.3GHz should report between 52 and 53 Gop/sec.
 
-The CPU frequency is reported in the perf output on the cycles line and after the '#' symbol.
+The CPU frequency is reported in the perf output on the cycles line and after the `#` symbol.
 
 ```bash
 perf stat ./arithmetic/fp64_sve_pred_fmla.x

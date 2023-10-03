@@ -1,20 +1,16 @@
 # STREAM
 
-STREAM is a defacto standard for measuring memory bandwidth. The STREAM benchmark is a simple, synthetic benchmark program that measures sustainable main memory bandwidth in MB/s and the corresponding computation rate for simple vector kernels. The benchmark includes four kernels that operate on 1D arrays `a`, `b`, and `c`, with scalar `x`:
+STREAM is the standard for measuring memory bandwidth. The STREAM benchmark is a simple, synthetic benchmark program that measures the sustainable main memory bandwidth in MB/s and the corresponding computation rate for simple vector kernels. The benchmark includes the following kernels that operate on 1D arrays `a`, `b`, and `c`, with scalar `x`:
 
-- **COPY**: Measures transfer rates in the absence of arithmetic, `c = a`
-- **SCALE**: Adds a simple arithmetic operation. `b = x*a`
-- **ADD**: Adds a third operand to allow multiple load/store ports on vector machines to be tested, `c = a + b`
-- **TRIAD**: Allows chained/overlapped/fused multiply/add operations, `a = b + x*c`
+- **COPY**: Measures transfer rates in the absence of arithmetic: `c = a`
+- **SCALE**: Adds a simple arithmetic operation: `b = x*a`
+- **ADD**: Adds a third operand to allow multiple load/store ports to be tested: `c = a + b`
+- **TRIAD**: Allows chained/overlapped/fused multiply/add operations: `a = b + x*c`
 
-The kernels are executed in sequence in a loop. Two parameters configure STREAM:
+The kernels are executed in sequence in a loop, and the following parameters configure STREAM:
 
-- `STREAM_ARRAY_SIZE`: The number of double-precision elements in each array.
-  It is critical to select a sufficiently large array size when measuring
-  bandwidth to/from main memory.
+- `STREAM_ARRAY_SIZE`: The number of double-precision elements in each array. When you measure the bandwidth to/from main memory, you must select a suﬃciently large array size.
 - `NTIMES`: The number of iterations of the test loop.
-
-There are many versions of STREAM, but they all use the same four fundamental kernels.
 
 Use the STREAM benchmark to check LPDDR5X memory bandwidth. The following
 commands download and compile STREAM with a total memory footprint of approximately
@@ -32,7 +28,7 @@ commands download and compile STREAM with a total memory footprint of approximat
 | Grace CPU    | 240           | 72      | -m0,1         | 900+       |
 | Grace CPU    | 240           | 144     | -m0,1         | 900+       |
 
-Example of the STREAM Execution Output:
+Here is an example of the STREAM execution output:
 
 ```
 $ OMP_NUM_THREADS=72 OMP_PROC_BIND=spread numactl -m0,1 ./stream_openmp.exe
@@ -73,7 +69,7 @@ Solution Validates: avg error less than 1.000000e-13 on all three arrays
 
 ## Install
 
-The following commands download and compile STREAM with a total memory footprint of approximately 2.7GB, which is sufficient to exceed the L3 cache without excessive runtime. The general rule for running STREAM is that each array must be at least 4x the size of the sum of all the last-level caches used in the run, or 1 Million elements, whichever is larger.
+The following commands download and compile STREAM with a total memory footprint of approximately 2.7GB, which is sufficient to exceed the L3 cache without excessive runtime. The general rule for running STREAM is that each array must be at least four times the size of the sum of all the last-level caches that were used in the run, or 1 million elements, whichever is larger.
 
 ```bash
 wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
@@ -84,20 +80,20 @@ gcc -Ofast -march=native -fopenmp \
 
 ## Execute
 
-To run STREAM, set the number of OpenMP threads (OMP_NUM_THREADS) and the numactl flags according to the example below. Replace `{THREADS}` and `{FLAGS}` with the appropriate values from the table of reference results shown above. Use `OMP_PROC_BIND=spread` to distribute the threads evenly over all available cores and maximize bandwidth.
+To run STREAM, set the number of OpenMP threads (OMP_NUM_THREADS) and the numactl flags according to the following example. Replace `{THREADS}` and `{FLAGS}` with the appropriate values from the table of reference results shown above. To distribute the threads evenly over all available cores and maximize bandwidth, use `OMP_PROC_BIND=spread`.
 
 ```bash
 OMP_NUM_THREADS={THREADS} OMP_PROC_BIND=spread numactl {FLAGS} ./stream_openmp.exe
 ```
 
-System bandwidth is proportional to the memory capacity. Find your system’s memory capacity in the table above and use the given parameters to generate the expected score
+System bandwidth is proportionate to the memory capacity. Find your system's memory capacity in the table above and use the parameters to generate the expected score
 for STREAM TRIAD. For example, when running on a Grace-Hopper superchip with a memory capacity of 120GB, this command will score at least 450GB/s in STREAM TRIAD:
 
 ```bash
 OMP_NUM_THREADS=72 OMP_PROC_BIND=spread numactl -m0 ./stream_openmp.exe
 ```
 
-Similarly, this command will score at least 900GB/s in STREAM TRIAD on a Grace CPU Superchip with a memory capacity of 240GB:
+Similarly, the following command will score at least 900GB/s in STREAM TRIAD on a Grace CPU Superchip with a memory capacity of 240GB:
 
 ```bash
 OMP_NUM_THREADS=144 OMP_PROC_BIND=spread numactl -m0,1 ./stream_openmp.exe

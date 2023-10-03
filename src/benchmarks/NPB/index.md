@@ -1,6 +1,6 @@
 # NAS Parallel Benchmarks (NPB 1)
 
-The [NAS Parallel Benchmarks (NPB)](https://www.nas.nasa.gov/software/npb.html) are a small set of programs designed to help evaluate the performance of parallel supercomputers. The "NPB 1" benchmarks are derived from computational fluid dynamics (CFD) applications and consist of five kernels and three pseudo-applications. Problem sizes in NPB are predefined and indicated as different classes. Reference implementations of NPB are available in commonly-used programming models like MPI and OpenMP.
+The [NAS Parallel Benchmarks (NPB)](https://www.nas.nasa.gov/software/npb.html) are a small set of programs designed to help evaluate the performance of parallel supercomputers. The NPB 1 benchmarks are derived from computational fluid dynamics (CFD) applications and consist of five kernels and three pseudo-applications. Problem sizes in NPB are predefined and indicated as different classes. Reference implementations of NPB are available in commonly-used programming models like MPI and OpenMP.
 
 ## Reference Results
 
@@ -10,7 +10,7 @@ Performance is reported as "Mop/s total".
 | ------------ | ------------- | ------- | ------------- | --------- | -------- | -------- | --------- | --------- | --------- | ------ |
 | Grace CPU    | 240           | 72      | -m0           | 386758.21 | 26632.65 | 10485.73 | 293407.59 | 125382.93 | 136893.59 | 973.52 |
 
-## Build
+## Building the Benchmarks
 
 Download and unpack the NPB source code from nas.nasa.gov:
 ```
@@ -65,9 +65,9 @@ $ ls bin/
 bt.D.x  cg.D.x  ep.D.x  ft.D.x  lu.D.x  mg.D.x  sp.D.x  ua.D.x
 ```
 
-## Run
+## Runnming the Benchmarks
 
-Run each benchmark as shown below.  Replace `{BENCHMARK}` with the benchmark name, e.g. `cg`, and replace `{THREADS}` and `{FLAGS}` with the appropriate values from the table of reference results shown above.
+Run each benchmark individuall using the command shown below.  In the command, replace `{BENCHMARK}` with the benchmark name, for example `cg`, and replace `{THREADS}` and `{FLAGS}` with the appropriate values from the table of reference results shown above.
 ```bash
 OMP_NUM_THREADS={THREADS} OMP_PROC_BIND=close numactl {FLAGS} ./bin/{BENCHMARK}.D.x
 ```
