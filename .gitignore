@@ -2,3 +2,4 @@ book/
 theme/pagetoc.js
 theme/pagetoc.css
 .DS_Store
+scrub.sh
