@@ -1,0 +1,3 @@
+Use of NVIDIA Sans is governed by the EULA included with these files.
+
+Distribution and use without the express permission of NVIDIA Corporation is strictly prohibited.
