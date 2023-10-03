@@ -17,13 +17,13 @@ html {
 
 body {
     margin: 0;
-    font-size: 1.6rem;
+    font-size: 11pt;
     overflow-x: hidden;
 }
 
 code {
     font-family: "Roboto Mono", "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace !important;
-    font-size: 0.875em; /* please adjust the ace font size accordingly in editor.js */
+    font-size: 9pt; /* please adjust the ace font size accordingly in editor.js */
 }
 
 /* make long words/inline code not x overflow */
