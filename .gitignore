@@ -3,4 +3,5 @@ public/
 theme/pagetoc.js
 theme/pagetoc.css
 .DS_Store
+.vscode/
 scrub.sh
