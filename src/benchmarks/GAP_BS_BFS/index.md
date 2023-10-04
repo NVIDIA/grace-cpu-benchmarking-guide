@@ -20,7 +20,15 @@ make
 
 To quickly test the build, run the BFS kernel on 1024 vertices for one iteration:
 ```bash
-./bfs -g 10 -n 1
+$ ./bfs -g 10 -n 1
+```
+The command output should be similar to
+```
+Generate Time:       0.00547
+Build Time:          0.00295
+Graph has 1024 nodes and 10496 undirected edges for degree: 10
+Trial Time:          0.00921
+Average Time:        0.00921
 ```
 Additional command line flags can be found with `-h`.
 
@@ -41,11 +49,23 @@ This command will pin our application to CPU socket 0 and physical cores 0-71.
 
 ## Output
 
-When you run bfs using the command above on a Grace machine with atleast 72 cores, using Kronecker graph of scale 26 and degree 16 for 64 trials, we see an average time of approximately 0.0395 +/- 0.001 ms as shown in the figure below.
+When you run bfs using the command above on a Grace machine with at least 72 cores, using Kronecker graph of scale 26 and degree 16 for 64 trials, we see an average time of approximately 0.0395 +/- 0.001 ms as shown below.
 
-[![Example Output](sample_output.png)](sample_output.png)
-
-
+```
+Generate Time:       3.72415
+Build Time:          5.94936
+Graph has 67108864 nodes and 1051923215 undirected edges for degree: 15
+Trial Time:          0.03807
+Trial Time:          0.03730
+Trial Time:          0.04042
+Trial Time:          0.04184
+Trial Time:          0.03676
+...
+Trial Time:          0.03795
+Trial Time:          0.03576
+Trial Time:          0.04318
+Average Time:        0.03977
+```
 
 
 [1]: <http://arxiv.org/abs/1508.03619> "GAP Benchmark Suite"

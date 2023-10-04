@@ -63,6 +63,12 @@ In addition, we strongly recommend installing the following software packages:
     echo 0 > /proc/sys/kernel/watchdog
     ```
 
+* Optional, allow unprivileged users to measure system events.  Note that this setting has implications for system security.  See <https://www.kernel.org/doc/html/latest/admin-guide/perf-security.html> for additional information.
+
+    ```bash
+    echo 0 | sudo tee /proc/sys/kernel/perf_event_paranoid
+    ```
+
 ## Networking
 
 * Set the networking connection tracking size:

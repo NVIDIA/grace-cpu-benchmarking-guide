@@ -18,15 +18,15 @@ commands download and compile STREAM with a total memory footprint of approximat
 
 ## Reference Results
 
-| Superchip    | Capacity (GB) | Threads | numactl flags | TRIAD GB/s |
-| ------------ | ------------- | ------- | ------------- | ---------- |
-| Grace-Hopper | 120           | 36      | -m0           | 450+       |
-| Grace-Hopper | 120           | 72      | -m0           | 450+       |
-| Grace-Hopper | 480           | 36      | -m0           | 350+       |
-| Grace-Hopper | 480           | 72      | -m0           | 350+       |
-| Grace CPU    | 240           | 36      | -m0           | 450+       |
-| Grace CPU    | 240           | 72      | -m0,1         | 900+       |
-| Grace CPU    | 240           | 144     | -m0,1         | 900+       |
+| Superchip    | Capacity (GB) | Threads | `numactl` flags     | TRIAD GB/s |
+| ------------ | ------------- | ------- | ------------------- | ---------- |
+| Grace-Hopper | 120           | 36      | -m0                 | 450+       |
+| Grace-Hopper | 120           | 72      | -m0                 | 450+       |
+| Grace-Hopper | 480           | 36      | -m0                 | 350+       |
+| Grace-Hopper | 480           | 72      | -m0                 | 350+       |
+| Grace CPU    | 480           | 36      | -m0 -C0-35          | 450+       |
+| Grace CPU    | 480           | 72      | -m0,1 -C0-35,72-107 | 900+       |
+| Grace CPU    | 480           | 144     | -m0,1               | 900+       |
 
 Here is an example of the STREAM execution output:
 
@@ -80,20 +80,20 @@ gcc -Ofast -march=native -fopenmp \
 
 ## Execute
 
-To run STREAM, set the number of OpenMP threads (OMP_NUM_THREADS) and the numactl flags according to the following example. Replace `{THREADS}` and `{FLAGS}` with the appropriate values from the table of reference results shown above. To distribute the threads evenly over all available cores and maximize bandwidth, use `OMP_PROC_BIND=spread`.
+To run STREAM, set the number of OpenMP threads (OMP_NUM_THREADS) and the numactl flags according to the following example. Replace `${THREADS}` and `${FLAGS}` with the appropriate values from the table of reference results shown above. To distribute the threads evenly over all available cores and maximize bandwidth, use `OMP_PROC_BIND=spread`.
 
 ```bash
-OMP_NUM_THREADS={THREADS} OMP_PROC_BIND=spread numactl {FLAGS} ./stream_openmp.exe
+OMP_NUM_THREADS=${THREADS} OMP_PROC_BIND=spread numactl ${FLAGS} ./stream_openmp.exe
 ```
 
-System bandwidth is proportionate to the memory capacity. Find your system's memory capacity in the table above and use the parameters to generate the expected score
+Grace superchip memory bandwidth is proportionate to the total memory capacity. Find your system's memory capacity in the table above and use the same number of threads and `numactl` flags to generate the expected score
 for STREAM TRIAD. For example, when running on a Grace-Hopper superchip with a memory capacity of 120GB, this command will score at least 450GB/s in STREAM TRIAD:
 
 ```bash
 OMP_NUM_THREADS=72 OMP_PROC_BIND=spread numactl -m0 ./stream_openmp.exe
 ```
 
-Similarly, the following command will score at least 900GB/s in STREAM TRIAD on a Grace CPU Superchip with a memory capacity of 240GB:
+Similarly, the following command will score at least 900GB/s in STREAM TRIAD on a Grace CPU Superchip with a memory capacity of 480GB:
 
 ```bash
 OMP_NUM_THREADS=144 OMP_PROC_BIND=spread numactl -m0,1 ./stream_openmp.exe

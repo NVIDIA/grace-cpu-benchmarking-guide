@@ -2,7 +2,7 @@
 
 ## Architectural Features
 
-NVIDIA Grace implements the SVE2 and the NEON single-instruction-multiple-data (SIMD) instruction sets (refer to [Arm SIMD Instructons](vectorization.md) for more information).
+NVIDIA Grace implements the SVE2 and the NEON single-instruction-multiple-data (SIMD) instruction sets (refer to [Arm SIMD Instructions](vectorization.md) for more information).
 
 All server-class Arm64 processors support low-cost atomic operations that can improve system throughput for thread communication, locks, and mutexes
 (refer to [Locks, Synchronization, and Atomics](atomics.md) for more information).

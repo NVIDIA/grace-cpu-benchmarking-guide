@@ -4,7 +4,6 @@
 
 ----------------------------
 
-
 - [How to Use This Guide](index.md)
 - [Platform Configuration](platform.md)
 - [Foundational Benchmarks](foundations/index.md)

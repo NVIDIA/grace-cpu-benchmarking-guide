@@ -3,10 +3,12 @@
 The [NAS Parallel Benchmarks (NPB)](https://www.nas.nasa.gov/software/npb.html) are a small set of programs designed to help evaluate the performance of parallel supercomputers. The NPB 1 benchmarks are derived from computational fluid dynamics (CFD) applications and consist of five kernels and three pseudo-applications. Problem sizes in NPB are predefined and indicated as different classes. Reference implementations of NPB are available in commonly-used programming models like MPI and OpenMP.
 
 ## Reference Results
-### Grace CPU Superchip, 240GB Memory Capacity
+### Grace CPU Superchip, 480GB Memory Capacity
 
 ```bash
-OMP_NUM_THREADS=72 OMP_PROC_BIND=close numactl -m0 ./bin/${BENCHMARK}
+for BENCHMARK in bt cg ep lu mg sp ua ; do
+    OMP_NUM_THREADS=72 OMP_PROC_BIND=close numactl -m0 ./bin/${BENCHMARK}.D.x
+done
 ```
 
 | Benchmark | Mops/ total |
@@ -23,7 +25,8 @@ OMP_NUM_THREADS=72 OMP_PROC_BIND=close numactl -m0 ./bin/${BENCHMARK}
 ## Building the Benchmarks
 
 Download and unpack the NPB source code from nas.nasa.gov:
-```
+
+```bash
 wget https://www.nas.nasa.gov/assets/npb/NPB3.4.2.tar.gz
 tar xvzf NPB3.4.2.tar.gz
 cd NPB3.4.2/NPB3.4-OMP
