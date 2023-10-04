@@ -1,5 +1,10 @@
 # Grace CPU Benchmarking Guide
 
+[](cover.md)
+
+----------------------------
+
+
 - [How to Use This Guide](index.md)
 - [Platform Configuration](platform.md)
 - [Foundational Benchmarks](foundations/index.md)
@@ -11,7 +16,6 @@
     - [GAP Benchmark Suite: BFS](benchmarks/GAP_BS_BFS/index.md)
     - [NAS Parallel Benchmarks](benchmarks/NPB/index.md)
 - [Applications](applications/index.md)
-    - [WRF](applications/WRF/index.md)
     - [NAMD](applications/NAMD/index.md)
 - [Developing for NVIDIA Grace](developer/index.md)
     - [Arm SIMD Instructions](developer/vectorization.md)

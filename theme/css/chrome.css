@@ -189,8 +189,8 @@ a > .hljs {
 
 :not(pre) > .hljs {
     display: inline;
-    padding: 0.1em 0.3em;
-    border-radius: 3px;
+    /* padding: 0.1em 0.3em;
+    border-radius: 3px; */
 }
 
 :not(pre):not(a) > .hljs {

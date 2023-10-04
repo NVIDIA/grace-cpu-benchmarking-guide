@@ -23,3 +23,8 @@ no-section-label = true
 git-repository-icon = "fa-github"
 git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
 edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/main/{path}"
+
+[output.html.print]
+enable = true
+page-break = true
+

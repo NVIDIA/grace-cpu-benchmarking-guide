@@ -21,9 +21,11 @@ body {
     overflow-x: hidden;
 }
 
-code {
+pre code {
     font-family: "Roboto Mono", "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace !important;
     font-size: 9pt; /* please adjust the ace font size accordingly in editor.js */
+    background-color: #f2f2f2;
+    border-radius: 5px;
 }
 
 /* make long words/inline code not x overflow */
@@ -201,4 +203,36 @@ blockquote {
 
 .result-no-output {
     font-style: italic;
+}
+
+#coverpage .header {
+    display: block;
+    border-top: none;
+}
+
+#coverpage #logo {
+    display: inline-block;
+    content: var(--nvidia-logo-vert);
+    margin-bottom: 5em;
+    width: 10em;
+}
+
+#coverpage h1 {
+    border-top: none;
+}
+
+#noticepage {
+    font-size: xx-small;
+}
+
+#noticepage h1,
+#noticepage h2,
+#noticepage h3 {
+    margin-block-start: 0.25em;
+    margin-block-end: 0.25em;
+}
+
+#noticepage p {
+    margin-block-start: 0.25em;
+    margin-block-end: 0.25em;
 }

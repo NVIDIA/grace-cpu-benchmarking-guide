@@ -18,6 +18,10 @@
     padding: 0;
 }
 
+.footer {
+    display: none;
+}
+
 .page {
     overflow-y: initial;
 }
@@ -34,11 +38,17 @@ code {
     font-family: "Roboto Mono", "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace !important;
     font-size: 9pt; /* please adjust the ace font size accordingly in editor.js */
 
-    /* background-color: #666666; */
-    border-radius: 5px;
-
     /* Force background to be printed in Chrome */
     -webkit-print-color-adjust: exact;
+}
+
+table {
+    font-size: 9pt;
+}
+
+pre > .code {
+    background-color: #f2f2f2;
+    border-radius: 5px;
 }
 
 pre > .buttons {
@@ -51,7 +61,8 @@ a, a:visited, a:active, a:hover {
 }
 
 h1 {
-    border-top: #76b900 outset;
+    border-top: #76b900 solid 1px;
+    margin-bottom: 2.5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
