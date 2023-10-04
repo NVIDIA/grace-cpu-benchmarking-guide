@@ -1,6 +1,6 @@
-# Arm Single-Instructon Multiple-Data Instructions: SVE and NEON
+# Arm Vector Instructions: SVE and NEON
 
-NVIDIA Grace implements two single-instruction-multiple-data (SIMD) instruction extensions: 
+NVIDIA Grace implements two vector single-instruction-multiple-data (SIMD) instruction extensions: 
 - Advanced SIMD Instructions (NEON)
 - Arm Scalable Vector Extensions (SVE)
 
