@@ -4,7 +4,7 @@ STREAM is the standard for measuring memory bandwidth. The STREAM benchmark is a
 
 - **COPY**: Measures transfer rates in the absence of arithmetic: `c = a`
 - **SCALE**: Adds a simple arithmetic operation: `b = x*a`
-- **ADD**: Adds a third operand to allow multiple load/store ports to be tested: `c = a + b`
+- **ADD**: Adds a third operand to test multiple load/store ports: `c = a + b`
 - **TRIAD**: Allows chained/overlapped/fused multiply/add operations: `a = b + x*c`
 
 The kernels are executed in sequence in a loop, and the following parameters configure STREAM:

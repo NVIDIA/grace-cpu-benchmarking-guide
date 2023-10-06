@@ -10,7 +10,6 @@
     - [Fused Multiply Add](foundations/FMA/index.md)
     - [STREAM](foundations/STREAM/index.md)
 - [Common Benchmarks](benchmarks/index.md)
-    - [SPEC CPU 2017](benchmarks/SPEC_CPU_2017/index.md)
     - [HiBench: K-means](benchmarks/HiBench_K-means/index.md)
     - [GAP Benchmark Suite](benchmarks/GAP_BS_BFS/index.md)
     - [NAS Parallel Benchmarks](benchmarks/NPB/index.md)
