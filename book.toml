@@ -26,5 +26,5 @@ edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit
 
 [output.html.print]
 enable = true
-page-break = true
+page-break = false
 

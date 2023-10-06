@@ -18,15 +18,18 @@ commands download and compile STREAM with a total memory footprint of approximat
 
 ## Reference Results
 
-| Superchip    | Capacity (GB) | Threads | `numactl` flags     | TRIAD GB/s |
-| ------------ | ------------- | ------- | ------------------- | ---------- |
-| Grace-Hopper | 120           | 36      | -m0                 | 450+       |
-| Grace-Hopper | 120           | 72      | -m0                 | 450+       |
-| Grace-Hopper | 480           | 36      | -m0                 | 350+       |
-| Grace-Hopper | 480           | 72      | -m0                 | 350+       |
-| Grace CPU    | 480           | 36      | -m0 -C0-35          | 450+       |
-| Grace CPU    | 480           | 72      | -m0,1 -C0-35,72-107 | 900+       |
-| Grace CPU    | 480           | 144     | -m0,1               | 900+       |
+| Superchip    | Capacity (GB) | Threads | `numactl` flags | TRIAD MB/s |
+| ------------ | ------------- | ------- | --------------- | ---------- |
+| Grace-Hopper | 120           | 36      | -m0             | 450,000+   |
+| Grace-Hopper | 120           | 72      | -m0             | 450,000+   |
+| Grace-Hopper | 480           | 36      | -m0             | 350,000+   |
+| Grace-Hopper | 480           | 72      | -m0             | 350,000+   |
+| Grace CPU    | 240           | 36      | -m0 -C 0-35     | 450,000+   |
+| Grace CPU    | 240           | 72      | -m0,1           | 900,000+   |
+| Grace CPU    | 240           | 144     | -m0,1           | 900,000+   |
+| Grace CPU    | 480           | 36      | -m0 -C 0-35     | 350,000+   |
+| Grace CPU    | 480           | 72      | -m0,1           | 700,000+   |
+| Grace CPU    | 480           | 144     | -m0,1           | 700,000+   |
 
 Here is an example of the STREAM execution output:
 

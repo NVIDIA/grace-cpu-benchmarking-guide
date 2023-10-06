@@ -25,7 +25,7 @@
     --icons: #737480;
     --icons-hover: #b7b9cc;
 
-    --links: rgb(118,185,0);
+    --links: rgb(0,133,100);
 
     --inline-code-color: rgb(250,194,0);
 
@@ -68,7 +68,7 @@
     --icons: #43484d;
     --icons-hover: #b3c0cc;
 
-    --links: rgb(118,185,0);
+    --links: rgb(0,133,100);
 
     --inline-code-color: #c5c8c6;
 
@@ -111,7 +111,7 @@
     --icons: #747474;
     --icons-hover: #000000;
 
-    --links: rgb(118,185,0);
+    --links: rgb(0,133,100);
 
     --inline-code-color: hsl(0, 0%, 0%);
 
@@ -154,7 +154,7 @@
     --icons: #737480;
     --icons-hover: #b7b9cc;
 
-    --links: rgb(118,185,0);
+    --links: rgb(0,133,100);
 
     --inline-code-color: #c5c8c6;
 
@@ -197,7 +197,7 @@
     --icons: #737480;
     --icons-hover: #262625;
 
-    --links: #2b79a2;
+    --links: rgb(0,133,100);
 
     --inline-code-color: #6e6b5e;
 
@@ -241,7 +241,7 @@
         --icons: #43484d;
         --icons-hover: #b3c0cc;
 
-        --links: #2b79a2;
+        --links: rgb(0,133,100);
 
         --inline-code-color: #c5c8c6;
 

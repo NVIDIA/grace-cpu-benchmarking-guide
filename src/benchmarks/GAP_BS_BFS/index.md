@@ -1,4 +1,4 @@
-# GAP Benchmark Suite: Breadth First Search
+# GAP Benchmark Suite
 
 The [GAP Benchmark Suite (Beamer, 2015)][1] was released with the goal of helping standardize graph processing evaluations. Graph algorithms and their applications are currently gaining renewed interest, especially with the growth of social networks and their analysis. Graph algorithms are also important for their applications in science and recognition. The GAP benchmark suite provides high performance (CPU only) reference implementations for various graph operations and provides a standard for graph processing performance evaluations. 
 
@@ -10,7 +10,7 @@ This repo is the reference implementation for the [GAP Benchmark Suite](http://g
 
 ## Quick Start
 
-To build from source code: 
+To build from source, run the following commands: 
 
 ```bash
 git clone https://github.com/sbeamer/gapbs.git 
@@ -32,9 +32,10 @@ Average Time:        0.00921
 ```
 Additional command line flags can be found with `-h`.
 
-## Running the BFS kernel
+## Running the BFS Kernel
 
-After successfully building and running a test run, you can run the bfs kernel. Here are the command line options of interest:
+These command line options set runtime parameters for the BFS kernel:
+
 - `-g <scale>`: generate Kronecker graph with `2^scale` vertices.
 - `-k <degree>`: average degree for a synthetic graph.
 - `-n <n>`: performs `n` trials.

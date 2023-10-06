@@ -4,7 +4,7 @@ NVIDIA Grace implements two vector single-instruction-multiple-data (SIMD) instr
 - Advanced SIMD Instructions (NEON)
 - Arm Scalable Vector Extensions (SVE)
 
-Arm Advanced SIMD Instructions (or NEON) is the most common SIMD ISA for Arm64.  It is a fixed-length SIMD ISA that supports 128-bit vectors.  The first Arm-based supercomputer to appear on the Top500 Supercomputers list ([_Astra_](https://www.sandia.gov/labnews/2018/11/21/astra-2/)) used NEON to accelerate linear algebra, and many applications and libraries are already taking advantage of NEON.
+Arm Advanced SIMD Instructions (or NEON) is the most common SIMD ISA for Arm64.  It is a fixed-length SIMD ISA that supports 128-bit vectors.  The first Arm-based supercomputer to appear on the Top500 Supercomputers list (_[Astra](https://www.sandia.gov/labnews/2018/11/21/astra-2/)_) used NEON to accelerate linear algebra, and many applications and libraries are already taking advantage of NEON.
 
 More recently, Arm64 CPUs have started supporting [Arm Scalable Vector Extensions (SVE)](https://developer.arm.com/documentation/102476/latest/), which is a length-agnostic SIMD ISA that supports more datatypes than NEON (for example, FP16), offers more powerful instructions (for example, gather/scatter), and supports vector lengths of more than 128 bits.  SVE is currently found in [NVIDIA Grace](https://www.nvidia.com/en-us/data-center/grace-cpu/), the [AWS Graviton 3](https://aws.amazon.com/ec2/graviton/), [Fujitsu A64FX](https://www.fujitsu.com/global/products/computing/servers/supercomputer/a64fx/), and others.  SVE is not a new version of NEON, but an entirely new SIMD ISA.
 

@@ -16,7 +16,7 @@ If you are implementing your own approach, look at the Arm Architecture Register
 
 The source code for the `lscpu` utility is a great example of how to retrieve and use these registers.  For example, to learn how to translate the CPU part number in the `MIDR_EL1` register to a human-readable string read <https://github.com/util-linux/util-linux/blob/master/sys-utils/lscpu-arm.c>.
 
-Here's the output of `lscpu` on NVIDIA Grace-Hopper:
+Here is the output of `lscpu` on NVIDIA Grace-Hopper:
 ```
 nvidia@localhost:/home/nvidia$ lscpu
 Architecture:          aarch64
@@ -78,7 +78,7 @@ A complete list of Arm64 hardware capabilities is defined in the [glibc header f
 
 ## Example Source Code
 
-Here's a complete yet simple example code that includes some of the methods mentioned above.
+Here is a complete yet simple example code that includes some of the methods mentioned above.
 
 ```c
 #include <stdio.h>

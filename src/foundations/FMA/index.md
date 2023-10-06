@@ -1,4 +1,4 @@
-# Fused Multiply Add (FMA)
+# Fused Multiply Add
 
 NVIDIA provides an open source suite of benchmarking microkernels for Arm® CPUs. To
 allow precise counts of instructions and exercise specific functional units, these kernels
@@ -9,7 +9,7 @@ and check the CPU clock speed, use a Fused Multiply Add (FMA) kernel.
 
 The key performance metric is giga-operations per second (Gop/sec).  Grace can perform 16 FP64 FMA operations per cycle, so a Grace CPU with a nominal CPU frequency of 3.3GHz should report between 52 and 53 Gop/sec.
 
-Here's an example of benchmark output:
+Here is an example of benchmark output:
 ```bash
 $ perf stat ./arithmetic/fp64_sve_pred_fmla.x
 4( 16(SVE_FMLA_64b) );

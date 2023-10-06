@@ -205,6 +205,10 @@ blockquote {
     font-style: italic;
 }
 
+#coverpage {
+    page-break-after: always;
+}
+
 #coverpage .header {
     display: block;
     border-top: none;
@@ -222,6 +226,7 @@ blockquote {
 }
 
 #noticepage {
+    page-break-before: always;
     font-size: xx-small;
 }
 

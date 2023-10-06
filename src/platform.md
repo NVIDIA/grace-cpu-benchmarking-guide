@@ -57,7 +57,7 @@ In addition, we strongly recommend installing the following software packages:
     echo 6000 > /proc/sys/vm/dirty_writeback_centisecs
     ```
 
-* Disable the NMI watchdog
+* Disable the NMI watchdog:
 
     ```bash
     echo 0 > /proc/sys/kernel/watchdog
