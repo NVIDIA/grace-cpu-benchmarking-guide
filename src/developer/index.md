@@ -14,7 +14,7 @@ All Arm CPUs (including NVIDIA Grace) provide several ways to determine the avai
 
 Typically, all the same debuggers and profilers you rely on when working on x86 are available on NVIDIA Grace.
 The notable exceptions are vendor-specific products, for example, Intel® VTune.  The capabilities provided by these tools are
-provided also by other tools on NVIDIA Grace (refer to [Debugging](debugging.md) and [Profiling](profiling.md) for more information).
+provided also by other tools on NVIDIA Grace (refer to [Debugging](debugging.md) for more information).
 
 ## Language-Specific Guidance
 
