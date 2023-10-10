@@ -18,6 +18,9 @@ commands download and compile STREAM with a total memory footprint of approximat
 
 ## Reference Results
 
+Memory bandwidth depends on many factors, for instance, operating system kernel version and the default memory page size.  
+Without any code changes, STREAM TRIAD should score between 80% and 95% of the system's theoretical peak memory bandwidth.
+
 | Superchip    | Memory Capacity (GB) | Threads | TRIAD Min MB/s | TRIAD Max MB/s |
 | ------------ | -------------------- | ------- | -------------- | -------------- |
 | Grace Hopper | 120                  | 72      | 410,000        | 486,000        |
