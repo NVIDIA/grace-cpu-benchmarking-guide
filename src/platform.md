@@ -41,26 +41,26 @@ In addition, we strongly recommend installing the following software packages:
 * Drop the caches:
     
     ```bash
-    echo 3 > /proc/sys/vm/drop_caches
+    echo 3 | sudo tee /proc/sys/vm/drop_caches
     ```
 
 * Set the kernel dirty page values to the default values:
 
     ```bash
-    echo 10 > /proc/sys/vm/dirty_ratio
-    echo 5 > /proc/sys/vm/dirty_background_ratio
+    echo 10 | sudo tee /proc/sys/vm/dirty_ratio
+    echo 5 | sudo tee /proc/sys/vm/dirty_background_ratio
     ```
 
 * To reduce disk I/O, check for dirty page writeback every 60 seconds:
 
     ```bash
-    echo 6000 > /proc/sys/vm/dirty_writeback_centisecs
+    echo 6000 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
     ```
 
 * Disable the NMI watchdog:
 
     ```bash
-    echo 0 > /proc/sys/kernel/watchdog
+    echo 0 | sudo tee /proc/sys/kernel/watchdog
     ```
 
 * Optional, allow unprivileged users to measure system events.  Note that this setting has implications for system security.  See <https://www.kernel.org/doc/html/latest/admin-guide/perf-security.html> for additional information.
