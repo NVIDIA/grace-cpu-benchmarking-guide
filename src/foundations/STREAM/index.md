@@ -24,7 +24,7 @@ Without any code changes, STREAM TRIAD should score between 80% and 95% of the s
 | Superchip    | Memory Capacity (GB) | Threads | TRIAD Min MB/s | TRIAD Max MB/s |
 | ------------ | -------------------- | ------- | -------------- | -------------- |
 | Grace Hopper | 120                  | 72      | 410,000        | 486,000        |
-| Grace Hopper | 480                  | 72      | 288,000        | 342,000        |
+| Grace Hopper | 480                  | 72      | 307,000        | 365,000        |
 | Grace CPU    | 240                  | 144     | 820,000        | 972,000        |
 | Grace CPU    | 480                  | 144     | 820,000        | 972,000        |
 
