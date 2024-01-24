@@ -3,7 +3,7 @@
 Begin by installing all available software updates, for example,  `sudo apt update && sudo apt upgrade` on Ubuntu. Use the command `ldd --version` to check that GNU binutils version is 2.38 or later.
 For best performance, GCC should be at version 12.3 or later. `gcc --version` will report the GCC version.
 
-Many Linux distributions provide packages for GCC 12 compilers that can be installed alongside the system GCC.  For example, `sudo apt install gcc-12` on Ubuntu.  See your Linux distributions instructions for installing and using various GCC versions.
+Many Linux distributions provide packages for GCC 12 compilers that can be installed alongside the system GCC.  For example, `sudo apt install gcc-12` on Ubuntu.  See your Linux distribution's instructions for installing and using various GCC versions.
 In case your distribution does not provide these packages, or you are unable to install them, instructions for building and installing GCC are provided below.
  
 ## A Recommended Software Stack
@@ -28,10 +28,10 @@ but any recent version of these tools will work well on NVIDIA Grace.  Installat
 ## Building and Installing GCC 12.3 from Source
 
 ```admonish info "Prefer Linux Distribution GCC 12 Packages"
-Many Linux distributions provide packages for GCC 12 compilers that can be installed alongside the system GCC.  For example, `sudo apt install gcc-12` on Ubuntu.  You should use prefer these packages over building GCC from source.
+Many Linux distributions provide packages for GCC 12 compilers that can be installed alongside the system GCC.  For example, `sudo apt install gcc-12` on Ubuntu.  You should prefer those packages over building GCC from source.
 ```
 
-Follow the instructions below to build GCC 12.3 from source.  Note that filesystem I/O performance can affect compilation time, so we strongly recommend building GCC on a local filesystem, e.g. `/tmp`.
+Follow the instructions below to build GCC 12.3 from source.  Note that filesystem I/O performance can affect compilation time, so we recommend building GCC on a local filesystem or ramdisk, e.g. `/tmp`.
 
 Download and unpack the GCC source code:
 
@@ -40,7 +40,7 @@ wget https://ftp.gnu.org/gnu/gcc/gcc-12.3.0/gcc-12.3.0.tar.xz
 tar xvf gcc-12.3.0.tar.xz
 ```
 
-Use a script to download the GCC dependencies:
+Download the GCC prerequisites:
 
 ```bash
 cd gcc-12.3.0
@@ -61,7 +61,7 @@ isl-0.24.tar.bz2: OK
 All prerequisites downloaded successfully.
 ```
 
-Configure and compile GCC.  Remember to set `GCC_INSTALL_PREFIX` appropriately!  This example installs GCC to `/opt/gcc/12.3` but any valid filesystem path can be used:
+Configure, compile, and install GCC.  Remember to set `GCC_INSTALL_PREFIX` appropriately!  This example installs GCC to `/opt/gcc/12.3` but any valid filesystem path can be used:
 
 ```bash
 export GCC_INSTALL_PREFIX=/opt/gcc/12.3
