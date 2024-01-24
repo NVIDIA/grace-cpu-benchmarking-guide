@@ -5,3 +5,4 @@ theme/pagetoc.css
 .DS_Store
 .vscode/
 scrub.sh
+install.sh

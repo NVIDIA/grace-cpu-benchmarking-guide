@@ -5,7 +5,8 @@
 ----------------------------
 
 - [How to Use This Guide](index.md)
-- [Platform Configuration](platform.md)
+- [Platform Configuration](platform/index.md)
+  - [Software Environment](platform/software.md)
 - [Foundational Benchmarks](foundations/index.md)
     - [Fused Multiply Add](foundations/FMA/index.md)
     - [STREAM](foundations/STREAM/index.md)

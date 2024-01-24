@@ -457,7 +457,12 @@ Make changes to the following files based on your installation paths for Hadoop,
 
 The results can be found in the file `$HIBENCH_DIR/report/hibench.report`.
 
-## Output
+## Reference Results
+
+```admonish important 
+These figures are provided as guidelines and should not be interpreted as performance targets.
+```
+
 
 Here is the expected output on Grace:
 ```

@@ -2,30 +2,6 @@
 
 The [NAS Parallel Benchmarks (NPB)](https://www.nas.nasa.gov/software/npb.html) are a small set of programs designed to help evaluate the performance of parallel supercomputers. The NPB 1 benchmarks are derived from computational fluid dynamics (CFD) applications and consist of five kernels and three pseudo-applications. Problem sizes in NPB are predefined and indicated as different classes. Reference implementations of NPB are available in commonly-used programming models like MPI and OpenMP.
 
-## Reference Results
-### Grace CPU Superchip, 480GB Memory Capacity
-
-Use this script to run all the benchmarks on 72 cores of the Grace CPU:
-
-```bash
-#!/bin/bash
-for BENCHMARK in bt cg ep lu mg sp ua ; do
-    OMP_NUM_THREADS=72 OMP_PROC_BIND=close numactl -m0 ./bin/${BENCHMARK}.D.x
-done
-```
-
-Performance is reported on the line marked "Mops / total".  The expected performance is shown below.
-
-| Benchmark | Mops / total |
-| --------- | ----------- |
-| bt.D.x    | 386758.21   |
-| cg.D.x    | 26632.65    |
-| ep.D.x    | 10485.73    |
-| lu.D.x    | 293407.59   |
-| mg.D.x    | 125382.93   |
-| sp.D.x    | 136893.59   |
-| ua.D.x    | 973.52      |
-
 
 ## Building the Benchmarks
 
@@ -94,3 +70,32 @@ Run each benchmark individually using the command shown below.  In the command, 
 ```bash
 OMP_NUM_THREADS=${THREADS} OMP_PROC_BIND=close numactl ${FLAGS} ./bin/${BENCHMARK}
 ```
+
+## Reference Results
+
+```admonish important 
+These figures are provided as guidelines and should not be interpreted as performance targets.
+```
+
+### Grace CPU Superchip, 480GB Memory Capacity
+
+Use this script to run all the benchmarks on 72 cores of the Grace CPU:
+
+```bash
+#!/bin/bash
+for BENCHMARK in bt cg ep lu mg sp ua ; do
+    OMP_NUM_THREADS=72 OMP_PROC_BIND=close numactl -m0 ./bin/${BENCHMARK}.D.x
+done
+```
+
+Performance is reported on the line marked "Mops / total".  The expected performance is shown below.
+
+| Benchmark | Mops / total |
+| --------- | ----------- |
+| bt.D.x    | 386758.21   |
+| cg.D.x    | 26632.65    |
+| ep.D.x    | 10485.73    |
+| lu.D.x    | 293407.59   |
+| mg.D.x    | 125382.93   |
+| sp.D.x    | 136893.59   |
+| ua.D.x    | 973.52      |

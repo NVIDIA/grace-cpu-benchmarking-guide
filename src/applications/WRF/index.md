@@ -4,14 +4,6 @@ The [Weather Research and Forecasting (WRF) Model](https://www.mmm.ucar.edu/weat
 
 Arm64 is supported by the standard WRF distribution as of WRF 4.3.3. The following is an example of how to perform the standard procedure to build and execute on NVIDIA Grace. See [http://www2.mmm.ucar.edu/wrf/users/download/get_source.html](http://www2.mmm.ucar.edu/wrf/users/download/get_source.html) for more details.
 
-## Reference Results: CONUS 12km 
-
-| Superchip | Capacity (GB) | Ranks | Threads | Average Elapsed Seconds |
-| --------- | ------------- | ----- | ------- | ----------------------- |
-| Grace CPU | 240           | 4     | 18      | 1.5786                  |
-| Grace CPU | 240           | 8     | 18      | 1.2710                  |
-
-
 ## Install WRF
 
 ### Initial Configuration
@@ -267,4 +259,16 @@ The benchmark score is the average elapsed seconds per domain for all MPI ranks.
 # Quickly calculate the average elapsed seconds per domain as a figure-of-merit
 cat rsl.out.* | grep 'Timing for main:' | awk '{print $9}' | jq -s add/length
 ```
+
+## Reference Results: CONUS 12km 
+
+```admonish important 
+These figures are provided as guidelines and should not be interpreted as performance targets.
+```
+
+| Superchip | Capacity (GB) | Ranks | Threads | Average Elapsed Seconds |
+| --------- | ------------- | ----- | ------- | ----------------------- |
+| Grace CPU | 240           | 4     | 18      | 1.5786                  |
+| Grace CPU | 240           | 8     | 18      | 1.2710                  |
+
 

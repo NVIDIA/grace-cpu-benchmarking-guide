@@ -128,7 +128,11 @@ The metric of interest is ns/day (higher is better) corresponding to the number 
 
 ## Reference Results
 
-The following result was collected on a Grace Hopper Superchip using 72 CPU cores and completed in 121 seconds. As measured by hwmon, the average Grace module power was 275 Watts, and the benchmark consumed approximately 9.31 Watt-hours of energy.
+```admonish important 
+These figures are provided as guidelines and should not be interpreted as performance targets.
+```
+
+The following result was collected on a Grace Hopper Superchip using 72 CPU cores and completed in 121 seconds. As measured by `hwmon``, the average Grace module power was 275 Watts, and the benchmark consumed approximately 9.31 Watt-hours of energy.
 
 ```bash
 $ ./ns_per_day.py output.txt

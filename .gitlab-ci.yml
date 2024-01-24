@@ -9,10 +9,16 @@ pages:
   variables:
     CARGO_HOME: $CI_PROJECT_DIR/cargo
     MDBOOK_VERSION: 0.4.35
+    MDBOOK_LINKCHECK_VERSION: 0.7.7
+    MDBOOK_EXTERNAL_LINKS_VERSION: 0.1.1
+    MDBOOK_ADMONISH_VERSION: 1.15.0
   before_script: |
     export PATH="$PATH:$CARGO_HOME/bin"
-    cargo install --force --version ${MDBOOK_VERSION} mdbook 
-    cargo install --force mdbook-external-links mdbook-linkcheck
+    cargo install --force --version "${MDBOOK_VERSION}" --locked mdbook 
+    cargo install --force --version "${MDBOOK_EXTERNAL_LINKS_VERSION}" --locked mdbook-external-links 
+    cargo install --force --version "${MDBOOK_LINKCHECK_VERSION}" --locked mdbook-linkcheck
+    cargo install --force --version "${MDBOOK_ADMONISH_VERSION}" --locked mdbook-admonish 
+    mdbook-admonish install .
   script: |
     mdbook build -d book
     mv book/html public
@@ -24,4 +30,3 @@ pages:
   cache:
     paths:
       - $CARGO_HOME/bin
-  

@@ -16,7 +16,44 @@ Use the STREAM benchmark to check LPDDR5X memory bandwidth. The following
 commands download and compile STREAM with a total memory footprint of approximately
 2.7GB, which is sufficient to exceed the L3 cache without excessive runtime
 
+
+## Install
+
+The following commands download and compile STREAM with a total memory footprint of approximately 2.7GB, which is sufficient to exceed the L3 cache without excessive runtime. The general rule for running STREAM is that each array must be at least four times the size of the sum of all the last-level caches that were used in the run, or 1 million elements, whichever is larger.
+
+```bash
+wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
+gcc -Ofast -march=native -fopenmp \
+  	-DSTREAM_ARRAY_SIZE=120000000 -DNTIMES=200 \
+  	-o stream_openmp.exe stream.c
+```
+
+## Execute
+
+To run STREAM, set the number of OpenMP threads (OMP_NUM_THREADS) according to the following example. Replace `${THREADS}` with the appropriate value from the table of reference results shown above. To distribute the threads evenly over all available cores and maximize bandwidth, use `OMP_PROC_BIND=spread`.
+
+```bash
+OMP_NUM_THREADS=${THREADS} OMP_PROC_BIND=spread ./stream_openmp.exe
+```
+
+Grace superchip memory bandwidth is proportionate to the total memory capacity. Find your system's memory capacity in the table above and use the same number of threads to generate the expected score
+for STREAM TRIAD. For example, when running on a Grace-Hopper superchip with a memory capacity of 120GB, this command will report between 410GB/s and 486GB/s in STREAM TRIAD:
+
+```bash
+OMP_NUM_THREADS=72 OMP_PROC_BIND=spread ./stream_openmp.exe
+```
+
+Similarly, the following command will report between 820GB/s and 972GB/s in STREAM TRIAD on a Grace CPU Superchip with a memory capacity of 480GB:
+
+```bash
+OMP_NUM_THREADS=144 OMP_PROC_BIND=spread ./stream_openmp.exe
+```
+
 ## Reference Results
+
+```admonish important 
+These figures are provided as guidelines and should not be interpreted as performance targets.
+```
 
 Memory bandwidth depends on many factors, for instance, operating system kernel version and the default memory page size.  
 Without any code changes, STREAM TRIAD should score between 80% and 95% of the system's theoretical peak memory bandwidth.
@@ -65,36 +102,4 @@ Triad:         903687.9     0.003223     0.003187     0.003308
 -------------------------------------------------------------
 Solution Validates: avg error less than 1.000000e-13 on all three arrays
 -------------------------------------------------------------
-```
-
-## Install
-
-The following commands download and compile STREAM with a total memory footprint of approximately 2.7GB, which is sufficient to exceed the L3 cache without excessive runtime. The general rule for running STREAM is that each array must be at least four times the size of the sum of all the last-level caches that were used in the run, or 1 million elements, whichever is larger.
-
-```bash
-wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
-gcc -Ofast -march=native -fopenmp \
-  	-DSTREAM_ARRAY_SIZE=120000000 -DNTIMES=200 \
-  	-o stream_openmp.exe stream.c
-```
-
-## Execute
-
-To run STREAM, set the number of OpenMP threads (OMP_NUM_THREADS) according to the following example. Replace `${THREADS}` with the appropriate value from the table of reference results shown above. To distribute the threads evenly over all available cores and maximize bandwidth, use `OMP_PROC_BIND=spread`.
-
-```bash
-OMP_NUM_THREADS=${THREADS} OMP_PROC_BIND=spread ./stream_openmp.exe
-```
-
-Grace superchip memory bandwidth is proportionate to the total memory capacity. Find your system's memory capacity in the table above and use the same number of threads to generate the expected score
-for STREAM TRIAD. For example, when running on a Grace-Hopper superchip with a memory capacity of 120GB, this command will report between 410GB/s and 486GB/s in STREAM TRIAD:
-
-```bash
-OMP_NUM_THREADS=72 OMP_PROC_BIND=spread ./stream_openmp.exe
-```
-
-Similarly, the following command will report between 820GB/s and 972GB/s in STREAM TRIAD on a Grace CPU Superchip with a memory capacity of 480GB:
-
-```bash
-OMP_NUM_THREADS=144 OMP_PROC_BIND=spread ./stream_openmp.exe
 ```

@@ -11,6 +11,10 @@ create-missing = false
 
 [preprocessor.external-links]
 
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
 [output.linkcheck]
 
 [output.html]
@@ -23,6 +27,7 @@ no-section-label = true
 git-repository-icon = "fa-github"
 git-repository-url = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide"
 edit-url-template = "https://github.com/NVIDIA/grace-cpu-benchmarking-guide/edit/main/{path}"
+additional-css = ["./mdbook-admonish.css"]
 
 [output.html.print]
 enable = true

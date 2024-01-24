@@ -48,7 +48,12 @@ OMP_NUM_THREADS=72 OMP_PROC_BIND=close numactl -m0 -C 0-71 ./bfs -g 26 -k 16 -n 
 ```
 This command will pin our application to CPU socket 0 and physical cores 0-71. 
 
-## Output
+## Reference Results
+
+```admonish important 
+These figures are provided as guidelines and should not be interpreted as performance targets.
+```
+
 
 When you run bfs using the command above on a Grace machine with at least 72 cores, using Kronecker graph of scale 26 and degree 16 for 64 trials, we see an average time of approximately 0.0395 +/- 0.001 ms as shown below.
 
