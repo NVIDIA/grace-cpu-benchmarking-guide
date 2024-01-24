@@ -2,12 +2,41 @@
 
 Before benchmarking, you should check whether the platform configuration is optimal for the target benchmark. 
 The optimal configuration can vary by benchmark, but there are some common high-level settings of which you should be aware. 
+Most platforms benefit from the settings shown below.
 
 ```admonish info
 Refer to the [NVIDIA Grace Performance Tuning Guide](https://docs.nvidia.com/grace-performance-tuning-guide.pdf)
 and the platform-specific documentation at <https://docs.nvidia.com/grace/> for instructions on how to tune
 your platform for optimal performance.
 ```
+
+
+## Linux Kernel
+
+The following Linux kernel command line options are recommended:
+
+- `init_on_alloc=0`: Do not fill newly allocated pages and heap objects with zeroes by default.
+- `acpi_power_meter.force_cap_on=y`: Enable ACPI power meter and with power capping.
+- `numa_balancing=disable`: Disable automatic NUMA balancing.
+
+You can confirm these command line options are set by reading `/proc/cmdline`:
+```bash
+cat /proc/cmdline | tr ' ' '\n'
+```
+```bash
+BOOT_IMAGE=/boot/vmlinuz-6.2.0-1012-nvidia-64k
+root=UUID=76c84c6d-a59f-4a8d-903e-4cb9ef69b970
+ro
+rd.driver.blacklist=nouveau
+nouveau.modeset=0
+earlycon
+module_blacklist=nouveau
+acpi_power_meter.force_cap_on=y
+numa_balancing=disable
+init_on_alloc=0
+preempt=none
+```
+
 
 ## CPU and Memory
 
