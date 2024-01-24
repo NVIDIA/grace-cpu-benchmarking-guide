@@ -30,14 +30,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MDBOOK_VERSION: 0.4.35
+      MDBOOK_LINKCHECK_VERSION: 0.7.7
+      MDBOOK_EXTERNAL_LINKS_VERSION: 0.1.1
+      MDBOOK_ADMONISH_VERSION: 1.15.0
     steps:
       - uses: actions/checkout@v3
       - name: Install mdBook
         run: |
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
           rustup update
-          cargo install --force --version ${MDBOOK_VERSION} mdbook
-          cargo install --force mdbook-external-links mdbook-linkcheck
+          export PATH="$PATH:$CARGO_HOME/bin"
+          cargo install --force --version "${MDBOOK_VERSION}" --locked mdbook 
+          cargo install --force --version "${MDBOOK_EXTERNAL_LINKS_VERSION}" --locked mdbook-external-links 
+          cargo install --force --version "${MDBOOK_LINKCHECK_VERSION}" --locked mdbook-linkcheck
+          cargo install --force --version "${MDBOOK_ADMONISH_VERSION}" --locked mdbook-admonish 
+          mdbook-admonish install .
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
