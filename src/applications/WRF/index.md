@@ -24,6 +24,16 @@ NVIDIA Compilers and Tools
 Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 ```
 
+NVIDIA HPC SDK includes optimized MPI compilers and libraries, so you'll also have the appropriate MPI compilers in your path:
+
+```bash
+$ which mpirun
+/opt/nvidia/hpc_sdk/Linux_aarch64/23.7/comm_libs/mpi/bin/mpirun
+
+$ mpicc -show
+nvc -I/opt/nvidia/hpc_sdk/Linux_aarch64/23.7/comm_libs/openmpi/openmpi-3.1.5/include -Wl,-rpath -Wl,$ORIGIN:$ORIGIN/../../lib:$ORIGIN/../../../lib:$ORIGIN/../../../compilers/lib:$ORIGIN/../../../../compilers/lib:$ORIGIN/../../../../../compilers/lib -Wl,-rpath -Wl,/opt/nvidia/hpc_sdk/Linux_aarch64/23.7/comm_libs/openmpi/openmpi-3.1.5/lib -L/opt/nvidia/hpc_sdk/Linux_aarch64/23.7/comm_libs/openmpi/openmpi-3.1.5/lib -lmpi
+```
+
 Also verify that your GCC compiler is version 12.3 or later.
 
 ```bash
