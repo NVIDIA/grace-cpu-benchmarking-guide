@@ -10,10 +10,14 @@ and the platform-specific documentation at <https://docs.nvidia.com/grace/> for 
 your platform for optimal performance.
 ```
 
+```admonish warning
+The settings shown on this page are intended to maximize system performance and may affect system security.
+```
+
 
 ## Linux Kernel
 
-The following Linux kernel command line options are recommended:
+The following Linux kernel command line options are recommended for performance:
 
 - `init_on_alloc=0`: Do not fill newly allocated pages and heap objects with zeroes by default.
 - `acpi_power_meter.force_cap_on=y`: Enable ACPI power meter and with power capping.
