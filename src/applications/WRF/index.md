@@ -81,7 +81,7 @@ wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.14/hdf5-1.14.2/src/hd
 tar xvzf hdf5-1.14.2.tar.gz
 cd hdf5-1.14.2
 
-CC=$(which mpicc) FC=$(which mpifort) \
+CC=mpicc FC=mpifort \
     CFLAGS="-O3 -fPIC" FCFLAGS="-O3 -fPIC" \
     ./configure --prefix=$HDFDIR --enable-fortran --enable-parallel
 
@@ -98,7 +98,7 @@ wget https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz
 tar xvzf v4.9.2.tar.gz
 cd netcdf-c-4.9.2
 
-CC=$(which mpicc) FC=$(which mpifort) \
+CC=mpicc FC=mpifort \
     CPPFLAGS="-I$HDFDIR/include" \
     CFLAGS="-O3 -fPIC -I$HDFDIR/include" \
     FFLAGS="-O3 -fPIC -I$HDFDIR/include" \
@@ -119,7 +119,7 @@ wget https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.1.tar.gz
 tar xvzf v4.6.1.tar.gz
 cd netcdf-fortran-4.6.1/
 
-CC=$(which mpicc) FC=$(which mpifort) \
+CC=mpicc FC=mpifort \
     CPPFLAGS="-I$HDFDIR/include" \
     CFLAGS="-O3 -fPIC -I$HDFDIR/include" \
     FFLAGS="-O3 -fPIC -I$HDFDIR/include" \
