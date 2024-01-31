@@ -18,7 +18,8 @@ sudo apt install openjdk-11-jre-headless openjdk-11-jdk-headless maven python2 n
  
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-arm64"
 export PATH="$JAVA_HOME/bin:$PATH"
- 
+
+
 git clone https://github.com/Intel-bigdata/HiBench.git
 cd HiBench
 mvn -Phadoopbench -Psparkbench -Dspark=2.4 -Dscala=2.11 clean package
@@ -34,6 +35,7 @@ Apache Hadoop 3.3.0 contains a number of significant features and enhancements. 
 This is the first release to support Arm64 CPUs, and Java 11 runtime support is completed.
 
 ```bash
+cd $HOME
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
 tar zxvf hadoop-3.3.6.tar.gz
 cd ./hadoop-3.3.6/etc/hadoop
@@ -88,18 +90,11 @@ Modify the following files:
     </configuration>
     ```
 
-* `core-site.xml`
-
-    ```xml
-    <configuration>
-    <property>
-    <name>fs.default.name</name>
-    <value>hdfs://localhost:8020</value>
-    </property> 
-    </configuration>
-    ```
-
 * `mapred-site.xml`
+
+    ```admonish important
+    Update `$PATH_TO_HADOOP` to the correct value for your configuration.
+    ```
 
     ```xml
     <configuration>
@@ -124,6 +119,10 @@ Modify the following files:
 
 * `hdfs-site.xml`
 
+    ```admonish important
+    Update `$PATH_TO_HADOOP` to the correct value for your configuration.
+    ```
+
     ```xml
     <configuration>
     <property>
@@ -142,6 +141,10 @@ Modify the following files:
     ```
 
 * `hadoop-env.sh`
+
+    ```admonish important
+    Update `$PATH_TO_HADOOP` to the correct value for your configuration.
+    ```
 
     ```bash
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"  
