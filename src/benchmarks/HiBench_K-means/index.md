@@ -24,125 +24,125 @@ cd $PATH_TO_HADOOP/etc/hadoop
 
 Create configuration files:
 
-* `yarn-site.xml`
+#### `yarn-site.xml`
 
-    ```xml
-    <?xml version="1.0"?>
-    <configuration>
-    <!-- Site specific YARN configuration properties -->
-    <property>
-    <name>yarn.nodemanager.aux-services</name>
-    <value>mapreduce_shuffle</value>
-    </property>
-    <property>
-    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
-    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-    </property>
-    <property>
-        <name>yarn.resourcemanager.hostname</name>
-        <value>127.0.0.1</value>
-    </property>
-    <property>
-        <name>yarn.resourcemanager.address</name>
-        <value>127.0.0.1:8032</value>
-    </property>
-    <property>
-      <name>yarn.resourcemanager.scheduler.address</name>
-      <value>127.0.0.1:8030</value>
-    </property>
-    <property>
-      <name>yarn.resourcemanager.resource-tracker.address</name>
-      <value>127.0.0.1:8031</value>
-    </property>
-    <property>
-    <name>yarn.nodemanager.vmem-pmem-ratio</name>
-    <value>5</value>
-    </property>
-    </configuration>
-    ```
+```xml
+<?xml version="1.0"?>
+<configuration>
+<!-- Site specific YARN configuration properties -->
+<property>
+<name>yarn.nodemanager.aux-services</name>
+<value>mapreduce_shuffle</value>
+</property>
+<property>
+<name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+<value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+<property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>127.0.0.1</value>
+</property>
+<property>
+    <name>yarn.resourcemanager.address</name>
+    <value>127.0.0.1:8032</value>
+</property>
+<property>
+    <name>yarn.resourcemanager.scheduler.address</name>
+    <value>127.0.0.1:8030</value>
+</property>
+<property>
+    <name>yarn.resourcemanager.resource-tracker.address</name>
+    <value>127.0.0.1:8031</value>
+</property>
+<property>
+<name>yarn.nodemanager.vmem-pmem-ratio</name>
+<value>5</value>
+</property>
+</configuration>
+```
 
-* `core-site.xml`
+#### `core-site.xml`
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-    <configuration>
-    <property>
-    <name>fs.default.name</name>
-    <value>hdfs://localhost:8020</value>
-    </property> 
-    </configuration>
-    ```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+<property>
+<name>fs.default.name</name>
+<value>hdfs://localhost:8020</value>
+</property> 
+</configuration>
+```
 
-* `mapred-site.xml`
+#### `mapred-site.xml`
 
-    ```admonish important
-    Replace `$PATH_TO_HADOOP` with the path to the `hadoop-3.3.6` directory,
-    e.g. `<value>HADOOP_MAPRED_HOME=/home/nvidia/hadoop-3.3.6</value>`.
-    ```
+```admonish important
+Replace `$PATH_TO_HADOOP` with the path to the `hadoop-3.3.6` directory,
+e.g. `<value>HADOOP_MAPRED_HOME=/home/nvidia/hadoop-3.3.6</value>`.
+```
 
-    ```xml
-    <?xml version="1.0"?>
-    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-    <configuration>
-    <property>
-    <name>mapreduce.framework.name</name>
-    <value>yarn</value>
-    </property>
-    <property>
-      <name>yarn.app.mapreduce.am.env</name>
-      <value>HADOOP_MAPRED_HOME=$PATH_TO_HADOOP</value>
-    </property>
-    <property>
-      <name>mapreduce.map.env</name>
-      <value>HADOOP_MAPRED_HOME=$PATH_TO_HADOOP</value>
-    </property>
-    <property>
-      <name>mapreduce.reduce.env</name>
-      <value>HADOOP_MAPRED_HOME=$PATH_TO_HADOOP</value>
-    </property>
-    </configuration>
-    ```
+```xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+<property>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
+</property>
+<property>
+    <name>yarn.app.mapreduce.am.env</name>
+    <value>HADOOP_MAPRED_HOME=$PATH_TO_HADOOP</value>
+</property>
+<property>
+    <name>mapreduce.map.env</name>
+    <value>HADOOP_MAPRED_HOME=$PATH_TO_HADOOP</value>
+</property>
+<property>
+    <name>mapreduce.reduce.env</name>
+    <value>HADOOP_MAPRED_HOME=$PATH_TO_HADOOP</value>
+</property>
+</configuration>
+```
 
-* `hdfs-site.xml`
+#### `hdfs-site.xml`
 
-    ```admonish important
-    Replace `$PATH_TO_HADOOP` with the path to the hadoop-3.3.6 directory, e.g.
-    `<value>/home/nvidia/hadoop-3.3.6/namenode</value>`
-    ```
+```admonish important
+Replace `$PATH_TO_HADOOP` with the path to the hadoop-3.3.6 directory, e.g.
+`<value>/home/nvidia/hadoop-3.3.6/namenode</value>`
+```
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-    <configuration>
-    <property>
-    <name>dfs.replication</name>
-    <value>1</value>
-    </property>
-    <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>$PATH_TO_HADOOP/namenode</value>
-    </property>
-    <property>
-    <name>dfs.datanode.data.dir</name>
-    <value>datanode</value>
-    </property>
-    </configuration>
-    ```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+<property>
+<name>dfs.namenode.name.dir</name>
+<value>$PATH_TO_HADOOP/namenode</value>
+</property>
+<property>
+<name>dfs.datanode.data.dir</name>
+<value>datanode</value>
+</property>
+</configuration>
+```
 
-* `hadoop-env.sh`
+#### `hadoop-env.sh`
 
-    ```admonish important
-    Replace `$PATH_TO_HADOOP` with the path to the hadoop-3.3.6 directory, e.g.
-    `export HADOOP_HOME="/home/nvidia/hadoop-3.3.6"`
-    ```
+```admonish important
+Replace `$PATH_TO_HADOOP` with the path to the hadoop-3.3.6 directory, e.g.
+`export HADOOP_HOME="/home/nvidia/hadoop-3.3.6"`
+```
 
-    ```bash
-    export HADOOP_HOME="$PATH_TO_HADOOP"
-    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"  
-    export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
-    export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
-    ```
+```bash
+export HADOOP_HOME="$PATH_TO_HADOOP"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"  
+export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
+```
 
 After creating all Hadoop configuration files, initialize the `namenode` directory:
 
@@ -168,10 +168,8 @@ cp spark-defaults.conf.template spark-defaults.conf
 
 ### HiBench
 
-HiBench is an open source benchmark for big data applications. It works well with latest Spark and Hadoop version, but in order to install and compile it, we need to use Java 8. Newer Java versions are not compatible. In order to make maven work, you have to use `-Dspark=2.4 -Dscala=2.11` as shown below. After the installation is done, you can switch to another version of Spark in your `conf/spark.conf` file. 
-
-```admonish info
-Java 8 is required to build HiBench.  If the `mvn` command given below fails with an error like `object java.lang.Object in compiler mirror not found` please check that you have installed Java 8 and updated your `JAVA_HOME` and `PATH` environment variables.
+```admonish help "Java 8 is Required to Build HiBench"
+If the `mvn` command given below fails with an error like `object java.lang.Object in compiler mirror not found` please check that you have installed Java 8 and updated your `JAVA_HOME` and `PATH` environment variables.
 ```
 
 ```bash
@@ -187,8 +185,7 @@ mvn -Phadoopbench -Psparkbench -Dspark=2.4 -Dscala=2.11 clean package
 Configure HiBench:
 
 ```admonish important
-In the `sed` commands below, replace `$PATH_TO_HADOOP` and `$PATH_TO_SPARK` with the appropriate paths, e.g.
-sed -i 's#/PATH/TO/YOUR/SPARK/HOME#/home/nvidia/spark-3.5.0-bin-hadoop3#g' spark.conf
+Replace `$NUM_PARTITIONS`, `$PATH_TO_HADOOP`, and `$PATH_TO_SPARK` with the appropriate paths.
 ```
 
 ```bash
