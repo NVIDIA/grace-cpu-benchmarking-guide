@@ -191,7 +191,7 @@ In the `sed` commands below, replace `$PATH_TO_HADOOP` and `$PATH_TO_SPARK` with
 sed -i 's#/PATH/TO/YOUR/SPARK/HOME#/home/nvidia/spark-3.5.0-bin-hadoop3#g' spark.conf
 ```
 
-```
+```bash
 cd $HOME/HiBench/conf
 
 # Important: replace "$NUM_PARTITIONS" with the number of CPU cores you wish to use, e.g. 72 for Grace-Hopper.
