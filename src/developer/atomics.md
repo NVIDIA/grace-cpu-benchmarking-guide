@@ -7,7 +7,9 @@ Efficient synchronization is critical to achieving good performance in applicati
 
 One of the most significant differences between Arm and the x86 CPUs is their memory model. The Arm architecture has a weak memory model that allows for more compiler and hardware optimization to boost system performance. This differs from the x86 architecture Total Store Order (TSO) model. Different memory models can cause low-level codes (for example, drivers) to function well on one architecture but encounter performance problem or failure on the other.
 
-**Note:** You should only be interested in the Arm memory model if you are writing low level code, such as assembly language. 
+```admonish note
+The unique features of the Arm memory model are only relevent if you are writing low level code, such as assembly language.  Most software developers will not be affected by a change in memory model.
+```
 
 The details about Arm's memory model are below the application level and will be completely invisible to most users. If you are writing in a high-level language such as C, C++, or Fortran, you do not need to know the nuances of Arm's memory model. The one exception to this general rule is code that uses boutique synchronization constructs instead of standard best practices, for example, using `volatile` as a means of thread synchronization. 
 
