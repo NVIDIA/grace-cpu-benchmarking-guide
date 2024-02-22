@@ -34,20 +34,7 @@ $ mpicc -show
 nvc -I/opt/nvidia/hpc_sdk/Linux_aarch64/23.7/comm_libs/openmpi/openmpi-3.1.5/include -Wl,-rpath -Wl,$ORIGIN:$ORIGIN/../../lib:$ORIGIN/../../../lib:$ORIGIN/../../../compilers/lib:$ORIGIN/../../../../compilers/lib:$ORIGIN/../../../../../compilers/lib -Wl,-rpath -Wl,/opt/nvidia/hpc_sdk/Linux_aarch64/23.7/comm_libs/openmpi/openmpi-3.1.5/lib -L/opt/nvidia/hpc_sdk/Linux_aarch64/23.7/comm_libs/openmpi/openmpi-3.1.5/lib -lmpi
 ```
 
-Also verify that your GCC compiler is version 12.3 or later.
-
-```bash
-gcc --version
-```
-
-```
-gcc (GCC) 12.3.0
-Copyright (C) 2022 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-```
-
-NetCDF requires libcurl. On Ubuntu, you can install this easily with this command.
+NetCDF requires libcurl. On Ubuntu, you can install this easily with this command:
 
 ```bash
 sudo apt install libcurl4-openssl-dev
@@ -85,7 +72,7 @@ CC=mpicc FC=mpifort \
     CFLAGS="-O3 -fPIC" FCFLAGS="-O3 -fPIC" \
     ./configure --prefix=$HDFDIR --enable-fortran --enable-parallel
 
-make -j
+make -j72
 make install
 ```
 
@@ -106,7 +93,7 @@ CC=mpicc FC=mpifort \
     LDFLAGS="-O3 -fPIC -L$HDFDIR/lib -lhdf5_hl -lhdf5 -lz" \
     ./configure --prefix=$NETCDF
 
-make -j
+make -j72
 make install
 ```
 
@@ -127,7 +114,7 @@ CC=mpicc FC=mpifort \
     LDFLAGS="-O3 -fPIC -L$HDFDIR/lib -lhdf5_hl -lhdf5 -lz" \
     ./configure --prefix=$NETCDF
 
-make -j
+make -j72
 make install
 ```
 
@@ -136,17 +123,15 @@ make install
 ```bash
 cd $BUILD_DIR
 
-wget https://github.com/wrf-model/WRF/releases/download/v4.5.1/v4.5.1.tar.gz
-tar xvzf v4.5.1.tar.gz
-cd WRFV4.5.1
+wget https://github.com/wrf-model/WRF/releases/download/v4.5.2/v4.5.2.tar.gz
+tar xvzf v4.5.2.tar.gz
+cd WRFV4.5.2
 ```
 
 Run `./configure` and select the following options:
 
-- Choose a `dm+sm` option on the `NVHPC` row. In this example, this is option **16**.
+- Choose a `dm+sm` option on the `NVHPC` row. In this example, this is option **20**.
 - Choose **1** for nesting.
-
-Depending on the compilers available in your environment, other options may be presented in the menu. Check the numbers in the menu before making your selection.
 
 ```
 ./configure
@@ -157,16 +142,22 @@ Depending on the compilers available in your environment, other options may be p
 Please select from among the following Linux aarch64 options:
 
   1. (serial)   2. (smpar)   3. (dmpar)   4. (dm+sm)   GNU (gfortran/gcc)
-  2. (serial)   6. (smpar)   7. (dmpar)   8. (dm+sm)   GNU (gfortran/gcc)
-  3. (serial)  10. (smpar)  11. (dmpar)  12. (dm+sm)   GCC (gfortran/gcc): Aarch64
- 1.  (serial)  14. (smpar)  15. (dmpar)  16. (dm+sm)   NVHPC (nvfortran/nvc)
+  5. (serial)   6. (smpar)   7. (dmpar)   8. (dm+sm)   GNU (gfortran/gcc)
+  9. (serial)  10. (smpar)  11. (dmpar)  12. (dm+sm)   armclang (armflang/armclang): Aarch64
+ 13. (serial)  14. (smpar)  15. (dmpar)  16. (dm+sm)   GCC (gfortran/gcc): Aarch64
+ 17. (serial)  18. (smpar)  19. (dmpar)  20. (dm+sm)   NVHPC (nvfortran/nvc)
 
 Enter selection [1-16] : 16
 ------------------------------------------------------------------------
 Compile for nesting? (0=no nesting, 1=basic, 2=preset moves, 3=vortex following) [default 0]: 1
 ```
 
-Reset environment variables and run `./compile` to build WRF as shown below.
+```admonish important
+Depending on the compilers available in your environment, other options may be presented in the menu. Check the numbers in the menu before making your selection.
+```
+
+
+Reset environment variables:
 
 ```bash
 # Reset build environment to include `-lnetcdf` in LDFLAGS
@@ -179,8 +170,16 @@ export FFLAGS="-O3 -fPIC -I$HDFDIR/include"
 export LDFLAGS="-O3 -fPIC -L$HDFDIR/lib -lnetcdf -lhdf5_hl -lhdf5 -lz"
 export PATH=$NETCDF/bin:$PATH
 export LD_LIBRARY_PATH=$$NETCDF/lib:$LD_LIBRARY_PATH
+```
 
-./compile -j 20 em_real
+Set stack size to "unlimited":
+```bash
+ulimit -s unlimited
+```
+
+Run `./compile` to build WRF and save the output to `build.log`:
+```bash
+./compile em_real 2>&1 | tee build.log
 ```
 
 Look for a message similar to this at the end of the compilation log:
@@ -221,7 +220,7 @@ export LD_LIBRARY_PATH=$HDFDIR/lib:$LD_LIBRARY_PATH
 Download and unpack the CONUS 12km input files into a fresh run directory.
 
 ```bash
-cd $BUILD_DIR/WRFV4.5.1
+cd $BUILD_DIR/WRFV4.5.2
 
 # Copy the run directory template
 cp -a run run_CONUS12km
@@ -232,34 +231,33 @@ wget https://www2.mmm.ucar.edu/wrf/src/conus12km.tar.gz
 tar xvzf conus12km.tar.gz --strip-components=1
 ```
 
-WRF uses a hybrid parallelization scheme of MPI+OpenMP so take care when mapping processes to CPU cores to avoid oversubscribing the CPU.
-Use the example script below to launch `${RANKS}` MPI ranks, each with `${THREADS}` OpenMP threads, for a total of `${RANKS} x ${THREADS}` CPU processes.
-`${RANKS}` should be either '4' (for one NUMA domain) or '8' (for two NUMA domains).
-`${THREADS}` should be set to the number of cores per NUMA (that is, 72) divided by the number of MPI ranks.
-
+Configure the environment:
 ```bash
-export RANKS=4
-export THREADS=$((72/RANKS))
-export RANKS_PER_NUMA=4
-
-# Set stack limits
 ulimit -s unlimited
-export OMP_STACKSIZE=1G
-
-# Configure paths
 export PATH=$NETCDF/bin:$HDFDIR/bin:$PATH
 export LD_LIBRARY_PATH=$NETCDF/lib:$HDFDIR/lib:$LD_LIBRARY_PATH
+```
 
-# Configure OpenMP
-export OMP_NUM_THREADS=${THREADS} 
+On a Grace CPU Superchip with 144 cores, run WRF with 36 MPI ranks and give each MPI rank 4 OpenMP threads:
+```bash
+export OMP_STACKSIZE=1G 
 export OMP_PLACES=cores 
 export OMP_PROC_BIND=close 
+export OMP_NUM_THREADS=4 
+mpirun -np 36 -map-by ppr:18:numa:PE=4 ./wrf.exe
+```
 
-# Launch WRF in the background
-mpirun -np ${RANKS} -map-by ppr:${RANKS_PER_NUMA}:numa:PE=${THREADS} ./wrf.exe &
+On a Grace Hopper Superchip with 72 cores, run WRF with 18 MPI ranks and give each MPI rank 4 OpenMP threads:
+```bash
+export OMP_STACKSIZE=1G 
+export OMP_PLACES=cores 
+export OMP_PROC_BIND=close 
+export OMP_NUM_THREADS=4 
+mpirun -np 18 -map-by ppr:18:numa:PE=4 ./wrf.exe
+```
 
-# Watch the Rank 0 output logs
-sleep 5
+You can monitor the run progress by watching the output logs for MPI rank 0:
+```bash
 tail -f rsl.out.0000 rsl.error.0000
 ```
 
@@ -276,9 +274,8 @@ cat rsl.out.* | grep 'Timing for main:' | awk '{print $9}' | jq -s add/length
 These figures are provided as guidelines and should not be interpreted as performance targets.
 ```
 
-| Superchip | Capacity (GB) | Ranks | Threads | Average Elapsed Seconds |
-| --------- | ------------- | ----- | ------- | ----------------------- |
-| Grace CPU | 240           | 4     | 18      | 1.5786                  |
-| Grace CPU | 240           | 8     | 18      | 1.2710                  |
-
+| System              | Capacity (GB) | Ranks | Threads | Average Elapsed Seconds |
+| ------------------- | ------------- | ----- | ------- | ----------------------- |
+| Grace CPU Superchip | 480           | 36    | 4       | 0.3884                  |
+| Grace Hopper        | 120           | 18    | 4       | 0.5761                  |
 
