@@ -27,6 +27,33 @@ The script `hpl-aarch64.sh` can be invoked on a command line or through a slurm 
 Several sample input files are available in the container at `/workspace/hpl-linux-aarch64`.
 
 
+### Run with Singularity
+
+The instructions below assume Singularity 3.4.1 or later.
+
+Save the HPC-Benchmark container as a local Singularity image file:
+```bash
+singularity pull --docker-login hpc-benchmarks:23.10.sif docker://nvcr.io/nvidia/hpc-benchmarks:23.10
+```
+If prompted for a Docker username or password, just press "enter" to continue with guest access:
+```bash
+Enter Docker Username: # press "enter" key to skip
+Enter Docker Password: # press "enter" key to skip
+```
+This command saves the container in the current directory as hpc-benchmarks:23.10.sif.  
+
+To run HPL-NVIDIA on two nodes of NVIDIA Grace CPU using your custom HPL.dat file:
+
+```bash
+CONT='/path/to/hpc-benchmarks:23.10.sif'
+MOUNT="/path/to/your/custom/dat-files:/my-dat-files"
+
+srun -N 2 --ntasks-per-node=2 singularity run \
+     -B "${MOUNT}" "${CONT}" \
+     ./hpl-aarch64.sh --dat /my-dat-files/HPL.dat --cpu-affinity 0-71:72-143 --mem-affinity 0:1
+```
+
+
 ### Run with Pyxis/Enroot
 
 To run HPL-NVIDIA on two nodes of NVIDIA Grace CPU using your custom HPL.dat file:
@@ -41,25 +68,4 @@ srun -N 2 --ntasks-per-node=2 --cpu-bind=none --mpi=pmix \
      ./hpl-aarch64.sh --dat /my-dat-files/HPL.dat --cpu-affinity 0-71:72-143 --mem-affinity 0:1
 ```
 
-
-### Run with Singularity
-
-The instructions below assume Singularity 3.4.1 or later.
-
-Save the HPC-Benchmark container as a local Singularity image file:
-```
-singularity pull --docker-login hpc-benchmarks:23.10.sif docker://nvcr.io/nvidia/hpc-benchmarks:23.10
-```
-This command saves the container in the current directory as hpc-benchmarks:23.10.sif.
-
-To run HPL-NVIDIA on two nodes of NVIDIA Grace CPU using your custom HPL.dat file:
-
-```bash
-CONT='/path/to/hpc-benchmarks:23.10.sif'
-MOUNT="/path/to/your/custom/dat-files:/my-dat-files"
-
-srun -N 2 --ntasks-per-node=2 singularity run \
-     -B "${MOUNT}" "${CONT}" \
-     ./hpl-aarch64.sh --dat /my-dat-files/HPL.dat --cpu-affinity 0-71:72-143 --mem-affinity 0:1
-```
 
