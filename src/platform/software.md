@@ -1,6 +1,6 @@
 # Benchmarking Software Environment
 
-Begin by installing all available software updates, for example,  `sudo apt update && sudo apt upgrade` on Ubuntu. Use the command `ldd --version` to check that GNU binutils version is 2.38 or later.
+Begin by installing all available software updates, for example,  `sudo apt update && sudo apt upgrade` on Ubuntu. Use the command `ld --version` to check that GNU binutils version is 2.38 or later.
 For best performance, GCC should be at version 12.3 or later. `gcc --version` will report the GCC version.
 
 Many Linux distributions provide packages for GCC 12 compilers that can be installed alongside the system GCC.  For example, `sudo apt install gcc-12` on Ubuntu.  See your Linux distribution's instructions for installing and using various GCC versions.
