@@ -19,12 +19,13 @@ commands download and compile STREAM with a total memory footprint of approximat
 
 ## Install
 
-The following commands download and compile STREAM with a total memory footprint of approximately 2.7GB, which is sufficient to exceed the L3 cache without excessive runtime. The general rule for running STREAM is that each array must be at least four times the size of the sum of all the last-level caches that were used in the run, or 1 million elements, whichever is larger.
+The following commands download and compile STREAM with memory footprint of approximately 2.7GB per Grace CPU, which is sufficient to exceed the total system L3 cache without excessive runtime. The general rule for running STREAM is that each array must be at least four times the size of the sum of all the last-level caches that were used in the run, or 1 million elements, whichever is larger.
 
 ```bash
+STREAM_ARRAY_SIZE="($(nproc)/72*120000000)"
 wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
 gcc -Ofast -march=native -fopenmp \
-  	-DSTREAM_ARRAY_SIZE=120000000 -DNTIMES=200 \
+  	-DSTREAM_ARRAY_SIZE=${STREAM_ARRAY_SIZE} -DNTIMES=200 \
   	-o stream_openmp.exe stream.c
 ```
 
@@ -68,25 +69,25 @@ Without any code changes, STREAM TRIAD should score between 80% and 95% of the s
 Here is an example of the STREAM execution output:
 
 ```
-$ OMP_NUM_THREADS=72 OMP_PROC_BIND=spread ./stream_openmp.exe
+OMP_NUM_THREADS=144 OMP_PROC_BIND=spread ./stream_openmp.exe
 -------------------------------------------------------------
 STREAM version $Revision: 5.10 $
 -------------------------------------------------------------
 This system uses 8 bytes per array element.
 -------------------------------------------------------------
-Array size = 120000000 (elements), Offset = 0 (elements)
-Memory per array = 915.5 MiB (= 0.9 GiB).
-Total memory required = 2746.6 MiB (= 2.7 GiB).
+Array size = 240000000 (elements), Offset = 0 (elements)
+Memory per array = 1831.1 MiB (= 1.8 GiB).
+Total memory required = 5493.2 MiB (= 5.4 GiB).
 Each kernel will be executed 200 times.
  The *best* time for each kernel (excluding the first iteration)
  will be used to compute the reported bandwidth.
 -------------------------------------------------------------
-Number of Threads requested = 72
-Number of Threads counted = 72
+Number of Threads requested = 144
+Number of Threads counted = 144
 -------------------------------------------------------------
 Your clock granularity/precision appears to be 1 microseconds.
-Each test below will take on the order of 2927 microseconds.
-   (= 2927 clock ticks)
+Each test below will take on the order of 5729 microseconds.
+   (= 5729 clock ticks)
 Increase the size of the arrays if this shows that
 you are not getting at least 20 clock ticks per test.
 -------------------------------------------------------------
@@ -95,10 +96,10 @@ For best results, please be sure you know the
 precision of your system timer.
 -------------------------------------------------------------
 Function    Best Rate MB/s  Avg time     Min time     Max time
-Copy:          919194.6     0.002149     0.002089     0.002228
-Scale:         913460.0     0.002137     0.002102     0.002192
-Add:           916926.9     0.003183     0.003141     0.003343
-Triad:         903687.9     0.003223     0.003187     0.003308
+Copy:          662394.7     0.005964     0.005797     0.008116
+Scale:         685483.8     0.005744     0.005602     0.007843
+Add:           787098.2     0.007689     0.007318     0.008325
+Triad:         806812.4     0.007713     0.007139     0.011388
 -------------------------------------------------------------
 Solution Validates: avg error less than 1.000000e-13 on all three arrays
 -------------------------------------------------------------
