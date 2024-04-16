@@ -35,9 +35,9 @@ pushd ./specfem3d
 mkdir -p DATABASES_MPI
 rm -rf DATABASES_MPI/*
 rm -rf OUTPUT_FILES/*
-mpirun --allow-run-as-root -n $(nproc) --bind-to none --map-by core ./bin/xmeshfem3D
-mpirun --allow-run-as-root -n $(nproc) --bind-to none --map-by core ./bin/xgenerate_databases
-mpirun --allow-run-as-root -n $(nproc) --bind-to none --map-by core ./bin/xspecfem3D
+mpirun -n $(nproc) --bind-to none --map-by core ./bin/xmeshfem3D
+mpirun -n $(nproc) --bind-to none --map-by core ./bin/xgenerate_databases
+mpirun -n $(nproc) --bind-to none --map-by core ./bin/xspecfem3D
 cat OUTPUT_FILES/output_solver.txt
 popd
 ```
@@ -49,7 +49,7 @@ These figures are provided as guidelines and should not be interpreted as perfor
 
 The following result was collected on a Grace Superchip using 144 CPU cores.
 
-```bash
+```
  Time loop finished. Timing info:
  Total elapsed time in seconds =    991.00492298699999
  Total elapsed time in hh:mm:ss =      0 h 16 m 31 s

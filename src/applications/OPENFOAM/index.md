@@ -1,4 +1,4 @@
-# OPENFOAM
+# OpenFOAM
 
 OpenFOAM is a C++ toolbox for the development of customized numerical solvers, and pre-/post-processing utilities for the solution of continuum mechanics problems, most prominently including computational fluid dynamics.
 
@@ -30,8 +30,6 @@ popd
 ## Running Benchmarks on Grace
 
 ```bash
-export OMPI_ALLOW_RUN_AS_ROOT=1
-export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
 export OPENFOAM_ROOT=${PWD}
 export OPENFOAM_MPIRUN_ARGS="--map-by core --bind-to none --report-bindings"
 
@@ -56,8 +54,8 @@ popd
 These figures are provided as guidelines and should not be interpreted as performance targets.
 ```
 
-The following result was collected on a Grace Superchip using 144 CPU cores.
+The following result was collected on a Grace CPU Superchip using 144 CPU cores.
 
-```bash
+```
 ExecutionTime = 189.49 s  ClockTime = 197 s
 ```

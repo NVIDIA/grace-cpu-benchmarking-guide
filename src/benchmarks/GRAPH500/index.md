@@ -1,4 +1,4 @@
-# GRAPH500 
+# Graph500 
 
 The Graph500 is a rating of supercomputer systems, focused on data-intensive loads.
 
@@ -36,7 +36,7 @@ popd
 export SKIP_VALIDATION=1
 unset SKIP_BFS
 
-mpirun --allow-run-as-root -n $(nproc) --map-by core ./graph500/src/graph500_reference_bfs 28 16 
+mpirun -n $(nproc) --map-by core ./graph500/src/graph500_reference_bfs 28 16 
 ```
 
 ## Reference Results
@@ -47,7 +47,7 @@ These figures are provided as guidelines and should not be interpreted as perfor
 
 In the below output, bfs harmonic_mean_TEPS and bfs mean_time are our performance and runtime metrics respectively. TEPS here is traversed edges per second which is our absolute perf metric.
 
-```bash
+```
 SCALE:                          28
 edgefactor:                     16
 NBFS:                           64

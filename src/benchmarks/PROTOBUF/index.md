@@ -1,4 +1,4 @@
-# PROTOBUF 
+# protobuf 
 
 Protocol Buffers (a.k.a., protobuf) are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.
 
@@ -59,7 +59,7 @@ These figures are provided as guidelines and should not be interpreted as perfor
 
 You need to run n copies of the benchmark as indicated above. Next, you need to take geomean of all the scores. Then, pick the least score across all copies. The total score would be Score * copies = Socket score.
 
-```bash
+```
 Geomean of mins: 1291.26863081306
 Total score: 185942.682837081 MB/s
 ```
