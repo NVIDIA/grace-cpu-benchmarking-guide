@@ -59,12 +59,12 @@ These figures are provided as guidelines and should not be interpreted as perfor
 Memory bandwidth depends on many factors, for instance, operating system kernel version and the default memory page size.  
 Without any code changes, STREAM TRIAD should score between 80% and 95% of the system's theoretical peak memory bandwidth.
 
-| Superchip    | Memory Capacity (GB) | Threads | TRIAD Min MB/s | TRIAD Max MB/s |
-| ------------ | -------------------- | ------- | -------------- | -------------- |
-| Grace Hopper | 120                  | 72      | 410,000        | 486,000        |
-| Grace Hopper | 480                  | 72      | 307,000        | 365,000        |
-| Grace CPU    | 240                  | 144     | 820,000        | 972,000        |
-| Grace CPU    | 480                  | 144     | 820,000        | 972,000        |
+| Superchip    | Memory Capacity (GB) | Threads | TRIAD Min MB/s |
+| ------------ | -------------------- | ------- | -------------- |
+| Grace Hopper | 120                  | 72      | 400,000        |
+| Grace Hopper | 480                  | 72      | 307,000        |
+| Grace CPU    | 240                  | 144     | 800,000        |
+| Grace CPU    | 480                  | 144     | 800,000        |
 
 Here is an example of the STREAM execution output:
 
