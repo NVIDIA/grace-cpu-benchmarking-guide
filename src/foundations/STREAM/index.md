@@ -24,7 +24,7 @@ The following commands download and compile STREAM with memory footprint of appr
 ```bash
 STREAM_ARRAY_SIZE="($(nproc)/72*120000000)"
 wget https://www.cs.virginia.edu/stream/FTP/Code/stream.c
-gcc -Ofast -march=native -fopenmp \
+gcc -Ofast -march=native -fopenmp -mcmodel=large -fno-PIC \
   	-DSTREAM_ARRAY_SIZE=${STREAM_ARRAY_SIZE} -DNTIMES=200 \
   	-o stream_openmp.exe stream.c
 ```
